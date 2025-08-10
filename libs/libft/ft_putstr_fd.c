@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: wsilveir <wsilveir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/07 18:17:39 by wini              #+#    #+#             */
-/*   Updated: 2025/08/10 06:26:48 by wini             ###   ########.fr       */
+/*   Created: 2025/07/19 12:38:33 by wsilveir          #+#    #+#             */
+/*   Updated: 2025/07/19 19:08:28 by wsilveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx.h"
 #include "libft.h"
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
-
-typedef struct s_data
+void	ft_putstr_fd(char *s, int fd)
 {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}				t_data;
+	size_t	i;
 
-#endif
+	i = 0;
+	while (s[i])
+		write(fd, &s[i++], 1);
+}

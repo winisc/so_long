@@ -6,13 +6,13 @@
 /*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 19:51:15 by wsilveir          #+#    #+#             */
-/*   Updated: 2025/08/07 02:59:46 by wini             ###   ########.fr       */
+/*   Updated: 2025/08/10 05:54:50 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
-static int	get_new_line(char *tmp_buffer)
+static int	get_new_line(const char *tmp_buffer)
 {
 	int	i;
 
@@ -43,7 +43,7 @@ static char	*read_buffer_nl(int fd, char *tmp_buffer)
 		if (rd_bytes == 0)
 			break ;
 		if (rd_bytes == -1)
-			return (ft_read_error(rd_buffer, tmp_buffer));
+			return (ft_double_free(rd_buffer, tmp_buffer));
 		rd_buffer[rd_bytes] = 0;
 		tmp_storage = ft_strjoin(tmp_buffer, rd_buffer);
 		free(tmp_buffer);
@@ -54,7 +54,7 @@ static char	*read_buffer_nl(int fd, char *tmp_buffer)
 	return (tmp_buffer);
 }
 
-static char	*get_line(char *tmp_buffer, int nl_index)
+static char	*get_line(const char *tmp_buffer, int nl_index)
 {
 	char	*nl_buffer;
 

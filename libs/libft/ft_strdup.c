@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: wsilveir <wsilveir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/07 18:17:39 by wini              #+#    #+#             */
-/*   Updated: 2025/08/10 06:26:48 by wini             ###   ########.fr       */
+/*   Created: 2025/07/10 20:00:18 by wsilveir          #+#    #+#             */
+/*   Updated: 2025/07/21 17:19:34 by wsilveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx.h"
 #include "libft.h"
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
-
-typedef struct s_data
+char	*ft_strdup(const char *src)
 {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}				t_data;
+	char	*str;
+	int		i;
 
-#endif
+	str = (char *)malloc((ft_strlen(src) + 1) * sizeof(char));
+	i = 0;
+	if (!str)
+		return (NULL);
+	while (src[i])
+	{
+		str[i] = src[i];
+		i++;
+	}
+	str[i] = 0;
+	return (str);
+}

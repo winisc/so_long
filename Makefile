@@ -6,38 +6,50 @@
 #    By: wini <wini@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/07 19:14:29 by wini              #+#    #+#              #
-#    Updated: 2025/08/07 21:37:15 by wini             ###   ########.fr        #
+#    Updated: 2025/08/10 06:27:28 by wini             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
-SRCS_DIR = srcs
-INCLUDES = -Iincludes -Imlx
-MLX_DIR = mlx
-
-SRCS = $(SRCS_DIR)/main.c
-
-OBJS = $(SRCS:.c=.o)
-
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-MLX_LIBS = -Lmlx -lmlx -lXext -lX11 -lm
+SRCS_DIR = srcs
+MLX_DIR = mlx
+LIBFT_DIR = libs/libft
 
-all: $(NAME)
+INCLUDES = -Iincludes -Imlx -I$(LIBFT_DIR)
 
-$(NAME): $(OBJS)
+SRCS = $(SRCS_DIR)/main.c
+OBJS = $(SRCS:.c=.o)
+
+MLX_LIBS = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
+LIBFT_A = $(LIBFT_DIR)/libft.a
+
+all: mlx libft $(NAME)
+
+$(NAME): $(OBJS) $(LIBFT_A)
+	$(CC) $(CFLAGS) $(OBJS) $(INCLUDES) -L$(LIBFT_DIR) -lft $(MLX_LIBS) -o $(NAME)
+
+%.o: %.c
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+libft:
+	@$(MAKE) -C $(LIBFT_DIR)
+
+mlx:
 	@$(MAKE) -C $(MLX_DIR)
-	$(CC) $(CFLAGS) $(OBJS) $(MLX_LIBS) -o $(NAME)
 
 clean:
 	rm -f $(OBJS)
+	@$(MAKE) clean -C $(LIBFT_DIR)
 	@$(MAKE) clean -C $(MLX_DIR)
 
 fclean: clean
 	rm -f $(NAME)
+	@$(MAKE) fclean -C $(LIBFT_DIR)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re mlx libft

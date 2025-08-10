@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/07 18:17:39 by wini              #+#    #+#             */
-/*   Updated: 2025/08/10 06:26:48 by wini             ###   ########.fr       */
+/*   Created: 2025/07/14 16:53:30 by wsilveir          #+#    #+#             */
+/*   Updated: 2025/07/22 23:54:59 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx.h"
 #include "libft.h"
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
-
-typedef struct s_data
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}				t_data;
+	size_t		m_size;
+	void		*ptr;
 
-#endif
+	if (!nmemb || !size)
+		return ((void *) ft_strdup(""));
+	if (size != 0 && nmemb * size / size != nmemb)
+		return (NULL);
+	m_size = nmemb * size;
+	ptr = (char *)malloc(m_size);
+	if (!ptr)
+		return (NULL);
+	ft_bzero(ptr, m_size);
+	return (ptr);
+}
