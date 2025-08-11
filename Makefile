@@ -6,14 +6,14 @@
 #    By: wini <wini@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/07 19:14:29 by wini              #+#    #+#              #
-#    Updated: 2025/08/10 17:15:15 by wini             ###   ########.fr        #
+#    Updated: 2025/08/11 04:57:12 by wini             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 SRCS_DIR = srcs
 MLX_DIR = mlx
@@ -21,7 +21,10 @@ LIBFT_DIR = libs/libft
 
 INCLUDES = -Iincludes -Imlx -I$(LIBFT_DIR)
 
-SRCS = $(SRCS_DIR)/main.c $(SRCS_DIR)/map.c
+SRCS = $(SRCS_DIR)/main.c \
+		$(SRCS_DIR)/ft_check_map.c \
+		$(SRCS_DIR)/ft_load_map.c
+		
 OBJS = $(SRCS:.c=.o)
 
 MLX_LIBS = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm

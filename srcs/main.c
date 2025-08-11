@@ -6,7 +6,7 @@
 /*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 16:44:14 by wini              #+#    #+#             */
-/*   Updated: 2025/08/10 17:23:49 by wini             ###   ########.fr       */
+/*   Updated: 2025/08/11 05:00:45 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 int	main(int argc, char **argv)
 {
+	t_map	*map;
+	char	*map_file;
+
 	if (argc != 2)
-	{
-		printf("\033[31minvalid arguments!\033[0m\n");
-		return (1);
-	}
-	if (!is_valid_map(argv[1]))
-	{
-		printf("\033[33minvalid map!\033[0m\n");
-		return (1);
-	}
-	printf("\033[32mvalid map!\033[0m\n");
+		return (printf("invalid arguments!\n"), 1);
+	map_file = argv[1];
+	map = ft_load_map(map_file);
+	if (!map)
+		return (printf("invalid map!\n"), 1);
+	printf("valid map!\n");
+	free (map);
 	return (0);
 }
