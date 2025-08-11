@@ -6,7 +6,7 @@
 /*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 19:33:53 by wsilveir          #+#    #+#             */
-/*   Updated: 2025/08/10 05:54:19 by wini             ###   ########.fr       */
+/*   Updated: 2025/08/10 21:54:14 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_list
 }	t_list;
 
 char	*ft_double_free(char *buf, char *tmp_buf);
+char	*get_next_line(int fd);
 
 size_t	ft_strlen(const char *str);
 

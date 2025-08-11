@@ -6,7 +6,7 @@
 #    By: wini <wini@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/07 19:14:29 by wini              #+#    #+#              #
-#    Updated: 2025/08/10 06:27:28 by wini             ###   ########.fr        #
+#    Updated: 2025/08/10 17:15:15 by wini             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ LIBFT_DIR = libs/libft
 
 INCLUDES = -Iincludes -Imlx -I$(LIBFT_DIR)
 
-SRCS = $(SRCS_DIR)/main.c
+SRCS = $(SRCS_DIR)/main.c $(SRCS_DIR)/map.c
 OBJS = $(SRCS:.c=.o)
 
 MLX_LIBS = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
