@@ -3,14 +3,88 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: wsilveir <wsilveir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 16:44:14 by wini              #+#    #+#             */
-/*   Updated: 2025/08/11 05:00:45 by wini             ###   ########.fr       */
+/*   Updated: 2025/08/16 22:17:06 by wsilveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+// void	ft_render_image_to_grid(t_game *game, void *asset, size_t x, size_t y)
+// {
+// 	mlx_put_image_to_window(game->mlx, game->win,
+// 		asset, x * TILE_SIZE, y * TILE_SIZE);
+// }
+
+// void	ft_render_map(t_game *game, t_list *grid)
+// {
+// 	char	*row;
+// 	size_t	x;
+// 	size_t	y;
+
+// 	y = 0;
+// 	while (grid)
+// 	{
+// 		x = 0;
+// 		row = (char *)grid->content;
+// 		while (row[x])
+// 		{
+// 			ft_render_image_to_grid(game, game->img_floor, x, y);
+// 			if (row[x] == '1')
+// 				ft_render_image_to_grid(game, game->img_wall, x, y);
+// 			else if (row[x] == 'P')
+// 				ft_render_image_to_grid(game, game->img_player, x, y);
+// 			else if (row[x] == 'C')
+// 				ft_render_image_to_grid(game, game->img_collectible, x, y);
+// 			else if (row[x] == 'E')
+// 				ft_render_image_to_grid(game, game->img_exit, x, y);
+// 			x++;
+// 		}
+// 		grid = grid->next;
+// 		y++;
+// 	}
+// }
+
+// int	ft_load_assets(t_game *game, int w, int h)
+// {
+// 	game->img_wall = mlx_xpm_file_to_image(game->mlx,
+// 			"assets/wall.xpm", &w, &h);
+// 	if (!game->img_wall)
+// 		return (0);
+// 	game->img_floor = mlx_xpm_file_to_image(game->mlx,
+// 			"assets/floor.xpm", &w, &h);
+// 	if (!game->img_floor)
+// 		return (0);
+// 	game->img_player = mlx_xpm_file_to_image(game->mlx,
+// 			"assets/player.xpm", &w, &h);
+// 	if (!game->img_player)
+// 		return (0);
+// 	game->img_exit = mlx_xpm_file_to_image(game->mlx,
+// 			"assets/exit.xpm", &w, &h);
+// 	if (!game->img_exit)
+// 		return (0);
+// 	game->img_collectible = mlx_xpm_file_to_image(game->mlx,
+// 			"assets/collectible.xpm", &w, &h);
+// 	if (!game->img_collectible)
+// 		return (0);
+// 	return (1);
+// }
+
+// int	ft_load_game(t_map *map)
+// {
+// 	t_game	game;
+
+// 	game.mlx = mlx_init();
+// 	game.win = mlx_new_window(game.mlx, map->width * TILE_SIZE,
+// 			map->height * TILE_SIZE, "herom");
+// 	if (!ft_load_assets(&game, map->width, map->height))
+// 		return (printf("load assets failed!\n"), 0);
+// 	ft_render_map(&game, map->grid);
+// 	mlx_loop(game.mlx);
+// 	return (1);
+// }
 
 int	main(int argc, char **argv)
 {
@@ -23,7 +97,9 @@ int	main(int argc, char **argv)
 	map = ft_load_map(map_file);
 	if (!map)
 		return (printf("invalid map!\n"), 1);
-	printf("valid map!\n");
-	free (map);
+	// printf("valid map!\n");
+	// if (!ft_load_game(map))
+	// 	return (printf("mlx failed!\n"), 1);
+	ft_free_load_map(map);
 	return (0);
 }

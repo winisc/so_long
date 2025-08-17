@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: wsilveir <wsilveir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 18:17:39 by wini              #+#    #+#             */
-/*   Updated: 2025/08/11 04:53:07 by wini             ###   ########.fr       */
+/*   Updated: 2025/08/16 22:33:23 by wsilveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,26 +18,39 @@
 # include <stdio.h>
 # include <fcntl.h>
 
-typedef struct s_data
-{
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}		t_data;
+# ifndef TILE_SIZE
+#  define TILE_SIZE 16
+# endif
 
 typedef struct s_map
 {
-	int		width;
-	int		height;
+	size_t	width;
+	size_t	height;
+	size_t	count_collectibles;
+	size_t	count_player;
+	size_t	count_exit;
 	char	**grid;
-	int		collectibles;
-	int		player;
-	int		exit;
-}		t_map;
+}	t_map;
+
+typedef struct s_game
+{
+	void	*mlx;
+	void	*win;
+	t_map	*map;
+	void	*img_wall;
+	void	*img_floor;
+	void	*img_player;
+	void	*img_exit;
+	void	*img_collectible;
+}	t_game;
 
 t_map	*ft_load_map(char *map_file);
-t_map	*ft_check_map(int fd);
+t_map	*ft_parse_map(int fd);
+size_t	ft_width_len(char *row);
+void	*ft_free_map_file(int fd);
+void	*ft_free_load_map(t_map *map);
+void	ft_start_map(t_map *map);
+char	*ft_strdup_nl(const char *src);
+void	ft_count_components(char *current_row, t_map *map);
 
 #endif

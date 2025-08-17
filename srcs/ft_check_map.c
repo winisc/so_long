@@ -3,68 +3,109 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: wsilveir <wsilveir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 18:49:11 by wini              #+#    #+#             */
-/*   Updated: 2025/08/11 05:01:55 by wini             ###   ########.fr       */
+/*   Updated: 2025/08/16 23:03:07 by wsilveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static int	ft_validate_rectangle_map(char *row, int width)
+int	ft_check_rectangle_map(char *current_row, t_map *map)
 {
-	int	check_width;
+	size_t	current_width;
 
-	check_width = 0;
-	while (row[check_width] && row[check_width] != '\n')
-		check_width++;
-	if (check_width != width)
+	current_width = map->width;
+	if (current_width != map->width)
 	{
-		free(row);
+		free(current_row);
+		free(map);
 		return (0);
 	}
 	return (1);
 }
 
-static int	ft_get_dimensions(int fd, int *ptr_height, int *ptr_width)
+int	ft_insert_lst_grid(char *current_row, t_list **lst_grid)
+{
+	t_list	*new_node;
+
+	new_node = ft_lstnew(ft_strdup_nl(current_row));
+	if (!new_node)
+	{
+		ft_lstclear(lst_grid, free);
+		return (0);
+	}
+	ft_lstadd_back(lst_grid, new_node);
+	return (1);
+}
+
+int	ft_populate_map(char *current_row, t_map *map, t_list **lst_grid)
+{
+	if (!ft_check_rectangle_map(current_row, map))
+	{
+		printf("(not rectangle)\n");
+		return (0);
+	}
+	if (!ft_insert_lst_grid(current_row, lst_grid))
+	{
+		printf("(allocated node failed)\n");
+		return (0);
+	}
+	return (1);
+}
+
+int	ft_create_map_grid(t_map *map, t_list *lst_grid)
+{
+	char	**grid;
+	size_t	i;
+
+	grid = (char **)malloc((map->height + 1) * sizeof(char *));
+	if (!grid)
+		return (0);
+	i = 0;
+	while (lst_grid)
+	{
+		grid[i] = ft_strdup((char *)lst_grid->content);
+		if (!grid[i])
+		{
+			ft_free_load_map(map);
+			return (0);
+		}
+		lst_grid = lst_grid->next;
+		i++;
+	}
+	grid[i] = NULL;
+	map->grid = grid;
+	ft_lstclear(&lst_grid, free);
+	return (1);
+}
+
+t_map	*ft_parse_map(int fd)
 {
 	char	*row;
+	t_map	*map;
+	t_list	*lst_grid;
 
 	row = get_next_line(fd);
 	if (!row)
-		return (0);
-	(*ptr_height)++;
-	while (row[*ptr_width] && row[*ptr_width] != '\n')
-		(*ptr_width)++;
-	free(row);
-	while (row)
-	{
-		row = get_next_line(fd);
-		if (row)
-		{
-			if (!ft_validate_rectangle_map(row, (*ptr_width)))
-				return (0);
-			free(row);
-			(*ptr_height)++;
-		}
-	}
-	return (1);
-}
-
-t_map	*ft_check_map(int fd)
-{
-	t_map	*map;
-
+		return (printf("(empty map_file)\n"), NULL);
 	map = malloc(sizeof(t_map));
 	if (!map)
 		return (NULL);
-	map->height = 0;
-	map->width = 0;
-	if (!ft_get_dimensions(fd, &map->height, &map->width))
+	ft_start_map(map);
+	lst_grid = NULL;
+	map->width = ft_width_len(row);
+	while (row)
 	{
-		free(map);
-		return (NULL);
+		if (!ft_populate_map(row, map, &lst_grid))
+			return ((t_map *) ft_free_map_file(fd));
+		free(row);
+		row = get_next_line(fd);
+		map->height++;
 	}
+	if (!ft_create_map_grid(map, lst_grid))
+		return (printf("(create grid failed)\n"), NULL);
 	return (map);
 }
+

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: wini <wini@student.42.fr>                  +#+  +:+       +#+         #
+#    By: wsilveir <wsilveir@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/07 19:14:29 by wini              #+#    #+#              #
-#    Updated: 2025/08/11 04:57:12 by wini             ###   ########.fr        #
+#    Updated: 2025/08/16 20:27:18 by wsilveir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,9 @@ INCLUDES = -Iincludes -Imlx -I$(LIBFT_DIR)
 
 SRCS = $(SRCS_DIR)/main.c \
 		$(SRCS_DIR)/ft_check_map.c \
-		$(SRCS_DIR)/ft_load_map.c
+		$(SRCS_DIR)/ft_load_map.c \
+		$(SRCS_DIR)/ft_so_long_utils.c \
+		$(SRCS_DIR)/ft_check_path_map.c \
 		
 OBJS = $(SRCS:.c=.o)
 
