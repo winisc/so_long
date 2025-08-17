@@ -6,7 +6,7 @@
 /*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 04:41:59 by wini              #+#    #+#             */
-/*   Updated: 2025/08/17 01:10:22 by wini             ###   ########.fr       */
+/*   Updated: 2025/08/17 11:27:41 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,22 +67,23 @@ t_map	*ft_load_map(char *map_file)
 
 	fd = open(map_file, O_RDONLY);
 	if (fd == -1)
-		return (NULL);
+		return (ft_handle_error("Error\ninvalid fd!", 0, 0, 0));
+	if (!ft_check_extension(map_file))
+		return (ft_handle_error("Error\ninvalid extension!", 0, fd, 0));
 	map = ft_parse_map(fd);
 	if (!map)
-	{
-		printf("(inital check map falid)\n");
-		close(fd);
 		return (NULL);
-	}
 	close(fd);
 	if (!ft_check_map_params(map))
-		return (printf("(check params failed)\n"), ft_free_load_map(map));
+		return ((t_map *) ft_handle_error("Error\ncomponents filed!",
+				map, 0, 0));
 	if (!ft_check_vertical_ends(map->grid, map->height))
-		return (printf("(check vertical ends failed)\n"), ft_free_load_map(map));
+		return ((t_map *) ft_handle_error("Error\nvertical ends wall filed!",
+				map, 0, 0));
 	if (!ft_check_horizontal_ends(map->grid, map->width, map->height))
-		return (printf("(check horizontal ends failed)\n"), ft_free_load_map(map));
+		return ((t_map *) ft_handle_error("Error\nhorizontal ends wall filed!",
+				map, 0, 0));
 	if (!ft_check_path(map))
-		return (ft_free_load_map(map));
+		return ((t_map *) ft_handle_error("Error\npath filed!", map, 0, 0));
 	return (map);
 }

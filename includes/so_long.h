@@ -6,7 +6,7 @@
 /*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 18:17:39 by wini              #+#    #+#             */
-/*   Updated: 2025/08/17 02:19:18 by wini             ###   ########.fr       */
+/*   Updated: 2025/08/17 11:06:56 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,8 @@ void	ft_start_map(t_map *map);
 char	*ft_strdup_nl(const char *src);
 void	ft_count_components(char *current_row, t_map *map);
 int		ft_check_path(t_map *map);
+int		ft_check_extension(char *map_file);
+int		ft_load_game(t_map *map);
+void	*ft_handle_error(char *msg, t_map *map, int fd, char **grid);
 
 #endif

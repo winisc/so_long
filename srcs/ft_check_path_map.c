@@ -6,7 +6,7 @@
 /*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 20:27:06 by wsilveir          #+#    #+#             */
-/*   Updated: 2025/08/17 01:59:40 by wini             ###   ########.fr       */
+/*   Updated: 2025/08/17 15:02:26 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	**ft_copy_grid(char **grid)
 	i = 0;
 	while (grid[i])
 		i++;
-	copy = malloc(i * sizeof(char *) + 1);
+	copy = malloc((i + 1) * sizeof(char *));
 	if (!copy)
 		return (NULL);
 	i = 0;
@@ -112,7 +112,6 @@ int	ft_check_path(t_map *map)
 	ft_fill_path(copy_grid, map, player_pos_x, player_pos_y);
 	if (!ft_check_collectibles_and_exit(copy_grid))
 	{
-		ft_putendl_fd("Error: Failed path", 2);
 		ft_free_grid(copy_grid);
 		return (0);
 	}
