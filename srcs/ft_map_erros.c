@@ -6,7 +6,7 @@
 /*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 00:51:28 by wini              #+#    #+#             */
-/*   Updated: 2025/08/17 11:26:13 by wini             ###   ########.fr       */
+/*   Updated: 2025/08/17 15:43:43 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	*ft_free_load_map(t_map *map)
 		return (NULL);
 	}
 	ft_free_grid(map->grid);
+	map->grid = NULL;
 	free (map);
 	map = NULL;
 	return (NULL);

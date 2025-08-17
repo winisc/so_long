@@ -6,7 +6,7 @@
 /*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 18:17:39 by wini              #+#    #+#             */
-/*   Updated: 2025/08/17 11:06:56 by wini             ###   ########.fr       */
+/*   Updated: 2025/08/17 17:26:58 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,8 @@ int		ft_check_path(t_map *map);
 int		ft_check_extension(char *map_file);
 int		ft_load_game(t_map *map);
 void	*ft_handle_error(char *msg, t_map *map, int fd, char **grid);
+int		ft_close_game(t_game *game);
+int		ft_key_hook(int keycode, t_game *game);
+int		ft_validate_components(char *current_row);
 
 #endif

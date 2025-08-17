@@ -6,7 +6,7 @@
 /*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 18:49:11 by wini              #+#    #+#             */
-/*   Updated: 2025/08/17 15:11:44 by wini             ###   ########.fr       */
+/*   Updated: 2025/08/17 17:38:57 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,17 @@ int	ft_insert_lst_grid(char *current_row, t_list **lst_grid)
 	new_node = ft_lstnew(ft_strdup_nl(current_row));
 	if (!new_node)
 	{
+		ft_putendl_fd("Error\nallocated lst failed!", 2);
 		ft_lstclear(lst_grid, free);
 		return (0);
 	}
 	ft_lstadd_back(lst_grid, new_node);
+	if (!ft_validate_components(new_node->content))
+	{
+		ft_putendl_fd("Error\ninvalid characters!", 2);
+		ft_lstclear(lst_grid, free);
+		return (0);
+	}
 	return (1);
 }
 
@@ -42,14 +49,12 @@ int	ft_populate_map(char *current_row, t_map *map, t_list **lst_grid)
 	{
 		ft_putendl_fd("Error\nnot rectangle!", 2);
 		free(current_row);
-		if (lst_grid)
-			ft_lstclear(lst_grid, free);
+		ft_lstclear(lst_grid, free);
 		ft_free_load_map(map);
 		return (0);
 	}
 	if (!ft_insert_lst_grid(current_row, lst_grid))
 	{
-		ft_putendl_fd("Error\nallocated lst failed!", 2);
 		free(current_row);
 		ft_free_load_map(map);
 		return (0);
@@ -114,4 +119,3 @@ t_map	*ft_parse_map(int fd)
 				map, fd, 0));
 	return (map);
 }
-
