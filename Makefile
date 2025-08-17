@@ -6,7 +6,7 @@
 #    By: wini <wini@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/07 19:14:29 by wini              #+#    #+#              #
-#    Updated: 2025/08/17 16:10:43 by wini             ###   ########.fr        #
+#    Updated: 2025/08/17 18:18:43 by wini             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SRCS = $(SRCS_DIR)/main.c \
 		$(SRCS_DIR)/ft_map_erros.c \
 		$(SRCS_DIR)/ft_init_game.c \
 		$(SRCS_DIR)/ft_state_game.c \
+		$(SRCS_DIR)/ft_player_controll.c \
 		
 OBJS = $(SRCS:.c=.o)
 

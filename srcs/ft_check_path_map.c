@@ -6,7 +6,7 @@
 /*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 20:27:06 by wsilveir          #+#    #+#             */
-/*   Updated: 2025/08/17 15:02:26 by wini             ###   ########.fr       */
+/*   Updated: 2025/08/17 17:57:56 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,21 +53,23 @@ char	**ft_copy_grid(char **grid)
 	return (copy);
 }
 
-void	ft_find_player(char **grid, size_t *px, size_t *py)
+void	ft_find_player(t_map *map, size_t *px, size_t *py)
 {
 	size_t	y;
 	size_t	x;
 
 	y = 0;
-	while (grid[y])
+	while (map->grid[y])
 	{
 		x = 0;
-		while (grid[y][x])
+		while (map->grid[y][x])
 		{
-			if (grid[y][x] == 'P')
+			if (map->grid[y][x] == 'P')
 			{
 				*px = x;
 				*py = y;
+				map->px = x;
+				map->py = y;
 				return ;
 			}
 			x++;
@@ -102,7 +104,7 @@ int	ft_check_path(t_map *map)
 	size_t	player_pos_y;
 	char	**copy_grid;
 
-	ft_find_player(map->grid, &player_pos_x, &player_pos_y);
+	ft_find_player(map, &player_pos_x, &player_pos_y);
 	copy_grid = ft_copy_grid(map->grid);
 	if (!copy_grid)
 	{

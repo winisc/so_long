@@ -6,16 +6,16 @@
 /*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 10:38:23 by wini              #+#    #+#             */
-/*   Updated: 2025/08/17 17:22:08 by wini             ###   ########.fr       */
+/*   Updated: 2025/08/17 19:58:44 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_render_image_to_grid(t_game *game, void *asset, size_t x, size_t y)
+void	ft_render_image_to_grid(t_game *game, void *texture, size_t x, size_t y)
 {
 	mlx_put_image_to_window(game->mlx, game->win,
-		asset, x * TILE_SIZE, y * TILE_SIZE);
+		texture, x * TILE_SIZE, y * TILE_SIZE);
 }
 
 void	ft_render_map(t_game *game, char **grid)
@@ -74,6 +74,8 @@ int	ft_load_game(t_map *map)
 	t_game	game;
 
 	game.map = map;
+	game.collectible_now = 0;
+	game.moves = 0;
 	game.mlx = mlx_init();
 	game.win = mlx_new_window(game.mlx, map->width * TILE_SIZE,
 			map->height * TILE_SIZE, GAME_NAME);

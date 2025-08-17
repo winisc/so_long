@@ -6,7 +6,7 @@
 /*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 11:40:05 by wsilveir          #+#    #+#             */
-/*   Updated: 2025/08/17 17:34:23 by wini             ###   ########.fr       */
+/*   Updated: 2025/08/17 17:56:19 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	ft_start_map(t_map *map)
 	map->count_player = 0;
 	map->count_exit = 0;
 	map->grid = NULL;
+	map->px = 0;
+	map->py = 0;
 }
 
 char	*ft_strdup_nl(const char *src)

@@ -6,7 +6,7 @@
 /*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 15:40:14 by wini              #+#    #+#             */
-/*   Updated: 2025/08/17 16:39:37 by wini             ###   ########.fr       */
+/*   Updated: 2025/08/17 18:24:51 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@ int	ft_key_hook(int keycode, t_game *game)
 	if (keycode == 65307)
 		ft_close_game(game);
 	if (keycode == 97)
-		printf("A\n");
+		ft_player_move(game, "left");
 	if (keycode == 100)
-		printf("D\n");
+		ft_player_move(game, "right");
 	if (keycode == 115)
-		printf("S\n");
+		ft_player_move(game, "down");
 	if (keycode == 119)
-		printf("W\n");
+		ft_player_move(game, "up");
 	return (0);
 }
