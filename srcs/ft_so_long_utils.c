@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_so_long_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wsilveir <wsilveir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 11:40:05 by wsilveir          #+#    #+#             */
-/*   Updated: 2025/08/16 23:02:07 by wsilveir         ###   ########.fr       */
+/*   Updated: 2025/08/17 00:58:48 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,6 @@ size_t	ft_width_len(char *row)
 	return (len);
 }
 
-void	*ft_free_map_file(int fd)
-{
-	char	*line;
-
-	line = get_next_line(fd);
-	while (line)
-	{
-		free(line);
-		line = get_next_line(fd);
-	}
-	free(line);
-	return (NULL);
-}
-
 void	ft_start_map(t_map *map)
 {
 	map->width = 0;
@@ -48,30 +34,6 @@ void	ft_start_map(t_map *map)
 	map->count_player = 0;
 	map->count_exit = 0;
 	map->grid = NULL;
-}
-
-void	*ft_free_load_map(t_map *map)
-{
-	size_t	i;
-
-	if (!map)
-		return (NULL);
-	if (!map->grid)
-	{
-		free (map);
-		map = NULL;
-		return (NULL);
-	}
-	i = 0;
-	while (map->grid[i])
-	{
-		free(map->grid[i]);
-		i++;
-	}
-	free (map->grid);
-	free (map);
-	map = NULL;
-	return (NULL);
 }
 
 char	*ft_strdup_nl(const char *src)
@@ -94,4 +56,20 @@ char	*ft_strdup_nl(const char *src)
 	}
 	str[i] = 0;
 	return (str);
+}
+
+void	ft_count_components(char *current_row, t_map *map)
+{
+	if (!current_row || !map)
+		return ;
+	while (*current_row)
+	{
+		if (*current_row == 'C')
+			map->count_collectibles++;
+		if (*current_row == 'P')
+			map->count_player++;
+		if (*current_row == 'E')
+			map->count_exit++;
+		current_row++;
+	}
 }

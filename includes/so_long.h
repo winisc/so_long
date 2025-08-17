@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wsilveir <wsilveir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 18:17:39 by wini              #+#    #+#             */
-/*   Updated: 2025/08/16 22:33:23 by wsilveir         ###   ########.fr       */
+/*   Updated: 2025/08/17 02:19:18 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,11 @@
 # include <fcntl.h>
 
 # ifndef TILE_SIZE
-#  define TILE_SIZE 16
+#  define TILE_SIZE 64
+# endif
+
+# ifndef GAME_NAME
+#  define GAME_NAME "test so_long"
 # endif
 
 typedef struct s_map
@@ -49,8 +53,10 @@ t_map	*ft_parse_map(int fd);
 size_t	ft_width_len(char *row);
 void	*ft_free_map_file(int fd);
 void	*ft_free_load_map(t_map *map);
+void	ft_free_grid(char **grid);
 void	ft_start_map(t_map *map);
 char	*ft_strdup_nl(const char *src);
 void	ft_count_components(char *current_row, t_map *map);
+int		ft_check_path(t_map *map);
 
 #endif

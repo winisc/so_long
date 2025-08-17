@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wsilveir <wsilveir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 18:49:11 by wini              #+#    #+#             */
-/*   Updated: 2025/08/16 23:03:07 by wsilveir         ###   ########.fr       */
+/*   Updated: 2025/08/17 00:54:43 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_check_rectangle_map(char *current_row, t_map *map)
 {
 	size_t	current_width;
 
-	current_width = map->width;
+	current_width = ft_width_len(current_row);
 	if (current_width != map->width)
 	{
 		free(current_row);
@@ -52,6 +52,7 @@ int	ft_populate_map(char *current_row, t_map *map, t_list **lst_grid)
 		printf("(allocated node failed)\n");
 		return (0);
 	}
+	ft_count_components(current_row, map);
 	return (1);
 }
 
