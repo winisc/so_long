@@ -6,7 +6,7 @@
 /*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 16:44:14 by wini              #+#    #+#             */
-/*   Updated: 2025/08/17 12:11:23 by wini             ###   ########.fr       */
+/*   Updated: 2025/08/17 15:13:32 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ int	main(int argc, char **argv)
 	if (!map)
 		return (1);
 	printf("valid map!\n");
-	// if (!ft_load_game(map)) 
-	// 	return (printf("mlx failed!\n"), 1);
+	if (!ft_load_game(map)) 
+		return (printf("mlx failed!\n"), 1);
 	ft_free_load_map(map);
 	return (0);
 }
