@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_path_map.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: wsilveir <wsilveir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 20:27:06 by wsilveir          #+#    #+#             */
-/*   Updated: 2025/08/17 17:57:56 by wini             ###   ########.fr       */
+/*   Updated: 2025/08/23 17:29:13 by wsilveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@ void	ft_fill_path(char **grid, t_map *map, size_t px, size_t py)
 		return ;
 	if (grid[py][px] == '1' || grid[py][px] == 'F')
 		return ;
+	if (grid[py][px] == 'E')
+	{	
+		grid[py][px] = 'F';
+		return ;
+	}
 	grid[py][px] = 'F';
 	if (px > 0)
 		ft_fill_path(grid, map, px - 1, py);
