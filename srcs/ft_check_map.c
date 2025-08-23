@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: wsilveir <wsilveir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 18:49:11 by wini              #+#    #+#             */
-/*   Updated: 2025/08/17 17:44:49 by wini             ###   ########.fr       */
+/*   Updated: 2025/08/23 16:53:29 by wsilveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ t_map	*ft_parse_map(int fd)
 		return ((t_map *) ft_handle_error("Error\nempty file!", 0, fd, 0));
 	map = malloc(sizeof(t_map));
 	if (!map)
-		return ((t_map *) ft_handle_error("Error\nallocated filed!", 0, fd, 0));
+		return ((t_map *) ft_handle_error("Error\nallocated failed!", 0, fd, 0));
 	ft_start_map(map);
 	lst_grid = NULL;
 	map->width = ft_width_len(row);
@@ -115,7 +115,7 @@ t_map	*ft_parse_map(int fd)
 		map->height++;
 	}
 	if (!ft_create_map_grid(map, &lst_grid))
-		return ((t_map *) ft_handle_error("Error\ngrid allocated filed!",
+		return ((t_map *) ft_handle_error("Error\ngrid allocated failed!",
 				map, fd, 0));
 	return (map);
 }

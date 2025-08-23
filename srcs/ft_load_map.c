@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_load_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: wsilveir <wsilveir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 04:41:59 by wini              #+#    #+#             */
-/*   Updated: 2025/08/17 11:27:41 by wini             ###   ########.fr       */
+/*   Updated: 2025/08/23 16:53:29 by wsilveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,15 +75,15 @@ t_map	*ft_load_map(char *map_file)
 		return (NULL);
 	close(fd);
 	if (!ft_check_map_params(map))
-		return ((t_map *) ft_handle_error("Error\ncomponents filed!",
+		return ((t_map *) ft_handle_error("Error\ncomponents failed!",
 				map, 0, 0));
 	if (!ft_check_vertical_ends(map->grid, map->height))
-		return ((t_map *) ft_handle_error("Error\nvertical ends wall filed!",
+		return ((t_map *) ft_handle_error("Error\nvertical ends wall failed!",
 				map, 0, 0));
 	if (!ft_check_horizontal_ends(map->grid, map->width, map->height))
-		return ((t_map *) ft_handle_error("Error\nhorizontal ends wall filed!",
+		return ((t_map *) ft_handle_error("Error\nhorizontal ends wall failed!",
 				map, 0, 0));
 	if (!ft_check_path(map))
-		return ((t_map *) ft_handle_error("Error\npath filed!", map, 0, 0));
+		return ((t_map *) ft_handle_error("Error\npath failed!", map, 0, 0));
 	return (map);
 }
