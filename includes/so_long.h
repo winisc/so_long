@@ -6,7 +6,7 @@
 /*   By: wsilveir <wsilveir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 18:17:39 by wini              #+#    #+#             */
-/*   Updated: 2025/08/24 17:36:36 by wsilveir         ###   ########.fr       */
+/*   Updated: 2025/08/24 18:34:43 by wsilveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,15 @@ typedef struct s_game
 	t_map	*map;
 	void	*img_wall;
 	void	*img_floor;
-	void	*img_player;
+	void	*img_player_anim_1;
+	void	*img_player_anim_2;
 	void	*img_exit_close;
 	void	*img_exit_open;
 	void	*img_collectible;
 	size_t	collectible_now;
 	int		moves_now;
+	int		frame_controll;
+	int		frame_counter;
 }	t_game;
 
 t_map	*ft_load_map(char *map_file);
@@ -74,5 +77,7 @@ int		ft_load_game(t_map *map);
 int		ft_close_game(t_game *game);
 int		ft_key_hook(int keycode, t_game *game);
 int		ft_validate_components(char *current_row);
+
+int		ft_handle_animation(t_game *game);
 
 #endif

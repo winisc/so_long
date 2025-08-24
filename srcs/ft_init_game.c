@@ -6,7 +6,7 @@
 /*   By: wsilveir <wsilveir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 10:38:23 by wini              #+#    #+#             */
-/*   Updated: 2025/08/24 17:40:09 by wsilveir         ###   ########.fr       */
+/*   Updated: 2025/08/24 18:36:12 by wsilveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_render_map(t_game *game, char **grid)
 			if (grid[y][x] == '1')
 				ft_render_image_to_grid(game, game->img_wall, x, y);
 			else if (grid[y][x] == 'P')
-				ft_render_image_to_grid(game, game->img_player, x, y);
+				ft_render_image_to_grid(game, game->img_player_anim_1, x, y);
 			else if (grid[y][x] == 'C')
 				ft_render_image_to_grid(game, game->img_collectible, x, y);
 			else if (grid[y][x] == 'E')
@@ -54,9 +54,13 @@ int	ft_load_assets(t_game *game, int w, int h)
 			"textures/floor.xpm", &w, &h);
 	if (!game->img_floor)
 		return (0);
-	game->img_player = mlx_xpm_file_to_image(game->mlx,
-			"textures/player.xpm", &w, &h);
-	if (!game->img_player)
+	game->img_player_anim_1 = mlx_xpm_file_to_image(game->mlx,
+			"textures/player_anim_1.xpm", &w, &h);
+	if (!game->img_player_anim_1)
+		return (0);
+	game->img_player_anim_2 = mlx_xpm_file_to_image(game->mlx,
+			"textures/player_anim_2.xpm", &w, &h);
+	if (!game->img_player_anim_2)
 		return (0);
 	game->img_exit_close = mlx_xpm_file_to_image(game->mlx,
 			"textures/exit_close.xpm", &w, &h);
@@ -81,6 +85,8 @@ void	ft_start_game(t_game *game, t_map *map)
 	game->mlx = mlx_init();
 	game->win = mlx_new_window(game->mlx, map->width * TILE_SIZE,
 			map->height * TILE_SIZE, GAME_NAME);
+	game->frame_controll = 1;
+	game->frame_counter = 0;
 }
 
 int	ft_load_game(t_map *map)
@@ -96,6 +102,7 @@ int	ft_load_game(t_map *map)
 	ft_render_map(&game, map->grid);
 	mlx_key_hook(game.win, ft_key_hook, &game);
 	mlx_hook(game.win, 17, 0, ft_close_game, &game);
+	mlx_loop_hook(game.mlx, ft_handle_animation, &game);
 	mlx_loop(game.mlx);
 	return (1);
 }

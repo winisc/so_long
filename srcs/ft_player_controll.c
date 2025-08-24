@@ -6,7 +6,7 @@
 /*   By: wsilveir <wsilveir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 18:18:36 by wini              #+#    #+#             */
-/*   Updated: 2025/08/24 18:00:06 by wsilveir         ###   ########.fr       */
+/*   Updated: 2025/08/24 18:39:12 by wsilveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_render_move(t_game *game, size_t move_x, size_t move_y)
 		game->map->py);
 	game->map->px = move_x;
 	game->map->py = move_y;
-	ft_render_image_to_grid(game, game->img_player, move_x, move_y);
+	ft_render_image_to_grid(game, game->img_player_anim_1, move_x, move_y);
 }
 
 void	ft_open_exit(t_game *game)
