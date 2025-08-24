@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init_game.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: wsilveir <wsilveir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 10:38:23 by wini              #+#    #+#             */
-/*   Updated: 2025/08/17 19:58:44 by wini             ###   ########.fr       */
+/*   Updated: 2025/08/24 17:40:09 by wsilveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_render_map(t_game *game, char **grid)
 			else if (grid[y][x] == 'C')
 				ft_render_image_to_grid(game, game->img_collectible, x, y);
 			else if (grid[y][x] == 'E')
-				ft_render_image_to_grid(game, game->img_exit, x, y);
+				ft_render_image_to_grid(game, game->img_exit_close, x, y);
 			x++;
 		}
 		y++;
@@ -58,9 +58,13 @@ int	ft_load_assets(t_game *game, int w, int h)
 			"textures/player.xpm", &w, &h);
 	if (!game->img_player)
 		return (0);
-	game->img_exit = mlx_xpm_file_to_image(game->mlx,
-			"textures/exit.xpm", &w, &h);
-	if (!game->img_exit)
+	game->img_exit_close = mlx_xpm_file_to_image(game->mlx,
+			"textures/exit_close.xpm", &w, &h);
+	if (!game->img_exit_close)
+		return (0);
+	game->img_exit_open = mlx_xpm_file_to_image(game->mlx,
+			"textures/exit_open.xpm", &w, &h);
+	if (!game->img_exit_open)
 		return (0);
 	game->img_collectible = mlx_xpm_file_to_image(game->mlx,
 			"textures/collectible.xpm", &w, &h);
@@ -69,18 +73,26 @@ int	ft_load_assets(t_game *game, int w, int h)
 	return (1);
 }
 
+void	ft_start_game(t_game *game, t_map *map)
+{
+	game->map = map;
+	game->collectible_now = 0;
+	game->moves_now = 0;
+	game->mlx = mlx_init();
+	game->win = mlx_new_window(game->mlx, map->width * TILE_SIZE,
+			map->height * TILE_SIZE, GAME_NAME);
+}
+
 int	ft_load_game(t_map *map)
 {
 	t_game	game;
 
-	game.map = map;
-	game.collectible_now = 0;
-	game.moves = 0;
-	game.mlx = mlx_init();
-	game.win = mlx_new_window(game.mlx, map->width * TILE_SIZE,
-			map->height * TILE_SIZE, GAME_NAME);
+	ft_start_game(&game, map);
 	if (!ft_load_assets(&game, map->width, map->height))
-		return (printf("load assets failed!\n"), 0);
+	{
+		ft_putendl_fd("Error\nLoad assets failed!", 2);
+		return (ft_close_game(&game));
+	}
 	ft_render_map(&game, map->grid);
 	mlx_key_hook(game.win, ft_key_hook, &game);
 	mlx_hook(game.win, 17, 0, ft_close_game, &game);

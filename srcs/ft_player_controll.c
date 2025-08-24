@@ -6,22 +6,46 @@
 /*   By: wsilveir <wsilveir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 18:18:36 by wini              #+#    #+#             */
-/*   Updated: 2025/08/23 17:05:50 by wsilveir         ###   ########.fr       */
+/*   Updated: 2025/08/24 18:00:06 by wsilveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	ft_check_move(size_t move_x, size_t move_y, t_game *game)
+void	ft_print_moves(int moves)
+{
+	ft_putstr_fd("Moves: ", 1);
+	ft_putnbr_fd(moves, 1);
+	ft_putendl_fd("", 1);
+}
+
+void	ft_render_move(t_game *game, size_t move_x, size_t move_y)
+{
+	ft_render_image_to_grid(game, game->img_floor, game->map->px,
+		game->map->py);
+	game->map->px = move_x;
+	game->map->py = move_y;
+	ft_render_image_to_grid(game, game->img_player, move_x, move_y);
+}
+
+void	ft_open_exit(t_game *game)
+{
+	ft_render_image_to_grid(game, game->img_exit_open, game->map->ex,
+		game->map->ey);
+}
+
+void	ft_attempt_to_move(size_t move_x, size_t move_y, t_game *game)
 {
 	char	**grid;
 
 	grid = game->map->grid;
 	if (grid[move_y][move_x] == '1')
-		return (0);
-	if (grid[move_y][move_x] == 'C')
+		return ;
+	else if (grid[move_y][move_x] == 'C')
 	{
 		game->collectible_now++;
+		if (game->collectible_now == game->map->count_collectibles)
+			ft_open_exit(game);
 		grid[move_y][move_x] = '0';
 	}
 	else if (grid[move_y][move_x] == 'E')
@@ -29,22 +53,12 @@ int	ft_check_move(size_t move_x, size_t move_y, t_game *game)
 		if (game->collectible_now == game->map->count_collectibles)
 			ft_close_game(game);
 		else
-			return (0);
+			return ;
 	}
-	ft_render_image_to_grid(game, game->img_floor, game->map->px,
-		game->map->py);
-	game->map->px = move_x;
-	game->map->py = move_y;
-	ft_render_image_to_grid(game, game->img_player, move_x, move_y);
-	game->moves++;
-	printf("Moves: %zu\n", game->moves);
-	return (1);
-}
-
-void	ft_attempt_to_move(size_t move_x, size_t move_y, t_game *game)
-{
-	if (!ft_check_move(move_x, move_y, game))
-		return ;
+	ft_render_move(game, move_x, move_y);
+	game->moves_now++;
+	ft_print_moves(game->moves_now);
+	return ;
 }
 
 void	ft_player_move(t_game *game, char *direction)

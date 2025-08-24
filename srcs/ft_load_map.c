@@ -6,7 +6,7 @@
 /*   By: wsilveir <wsilveir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 04:41:59 by wini              #+#    #+#             */
-/*   Updated: 2025/08/23 16:53:29 by wsilveir         ###   ########.fr       */
+/*   Updated: 2025/08/24 18:08:38 by wsilveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,27 @@ int	ft_check_map_params(t_map *map)
 	return (1);
 }
 
-int	ft_check_horizontal_ends(char **grid, size_t width, size_t height)
+int	ft_check_walls(char *row)
+{
+	while (*row)
+	{
+		if (*row != '1')
+			return (0);
+		row++;
+	}
+	return (1);
+}
+
+int	ft_check_the_vertical_ends(char **grid, size_t height)
+{
+	if (!ft_check_walls (grid[0]))
+		return (0);
+	if (!ft_check_walls (grid[height - 1]))
+		return (0);
+	return (1);
+}
+
+int	ft_check_the_horizontal_ends(char **grid, size_t width, size_t height)
 {
 	size_t	i;
 
@@ -40,26 +60,6 @@ int	ft_check_horizontal_ends(char **grid, size_t width, size_t height)
 	return (1);
 }
 
-int	ft_check_walls(char *row)
-{
-	while (*row)
-	{
-		if (*row != '1')
-			return (0);
-		row++;
-	}
-	return (1);
-}
-
-int	ft_check_vertical_ends(char **grid, size_t height)
-{
-	if (!ft_check_walls (grid[0]))
-		return (0);
-	if (!ft_check_walls (grid[height - 1]))
-		return (0);
-	return (1);
-}
-
 t_map	*ft_load_map(char *map_file)
 {
 	int		fd;
@@ -67,23 +67,23 @@ t_map	*ft_load_map(char *map_file)
 
 	fd = open(map_file, O_RDONLY);
 	if (fd == -1)
-		return (ft_handle_error("Error\ninvalid fd!", 0, 0, 0));
-	if (!ft_check_extension(map_file))
-		return (ft_handle_error("Error\ninvalid extension!", 0, fd, 0));
+		return (ft_handle_error("Error\nInvalid fd!", 0, 0, 0));
+	if (!ft_check_extension_fd(map_file))
+		return (ft_handle_error("Error\nInvalid fd extension!", 0, fd, 0));
 	map = ft_parse_map(fd);
 	if (!map)
-		return (NULL);
+		return (0);
 	close(fd);
 	if (!ft_check_map_params(map))
-		return ((t_map *) ft_handle_error("Error\ncomponents failed!",
+		return (ft_handle_error("Error\nComponents check failed!",
 				map, 0, 0));
-	if (!ft_check_vertical_ends(map->grid, map->height))
-		return ((t_map *) ft_handle_error("Error\nvertical ends wall failed!",
+	if (!ft_check_the_vertical_ends(map->grid, map->height))
+		return (ft_handle_error("Error\nNot surrounded by walls!",
 				map, 0, 0));
-	if (!ft_check_horizontal_ends(map->grid, map->width, map->height))
-		return ((t_map *) ft_handle_error("Error\nhorizontal ends wall failed!",
+	if (!ft_check_the_horizontal_ends(map->grid, map->width, map->height))
+		return (ft_handle_error("Error\nNot surrounded by walls!",
 				map, 0, 0));
 	if (!ft_check_path(map))
-		return ((t_map *) ft_handle_error("Error\npath failed!", map, 0, 0));
+		return (ft_handle_error("Error\nFailed to check path!", map, 0, 0));
 	return (map);
 }

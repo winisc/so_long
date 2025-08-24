@@ -6,7 +6,7 @@
 /*   By: wsilveir <wsilveir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 20:27:06 by wsilveir          #+#    #+#             */
-/*   Updated: 2025/08/23 17:29:13 by wsilveir         ###   ########.fr       */
+/*   Updated: 2025/08/24 17:48:59 by wsilveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ void	ft_fill_path(char **grid, t_map *map, size_t px, size_t py)
 	if (grid[py][px] == '1' || grid[py][px] == 'F')
 		return ;
 	if (grid[py][px] == 'E')
-	{	
+	{
+		map->ex = px;
+		map->ey = py;
 		grid[py][px] = 'F';
 		return ;
 	}
@@ -108,20 +110,16 @@ int	ft_check_path(t_map *map)
 	size_t	player_pos_x;
 	size_t	player_pos_y;
 	char	**copy_grid;
+	int		ok;
 
+	ok = 1;
 	ft_find_player(map, &player_pos_x, &player_pos_y);
 	copy_grid = ft_copy_grid(map->grid);
 	if (!copy_grid)
-	{
-		ft_putendl_fd("Error: Failed to copy map grid", 2);
 		return (0);
-	}
 	ft_fill_path(copy_grid, map, player_pos_x, player_pos_y);
 	if (!ft_check_collectibles_and_exit(copy_grid))
-	{
-		ft_free_grid(copy_grid);
-		return (0);
-	}
+		ok = 0;
 	ft_free_grid(copy_grid);
-	return (1);
+	return (ok);
 }

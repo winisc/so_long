@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_map_erros.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: wsilveir <wsilveir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 00:51:28 by wini              #+#    #+#             */
-/*   Updated: 2025/08/17 15:43:43 by wini             ###   ########.fr       */
+/*   Updated: 2025/08/24 15:33:16 by wsilveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,6 @@ void	*ft_free_load_map(t_map *map)
 	return (NULL);
 }
 
-int	ft_check_extension(char *map_file)
-{
-	size_t	len;
-
-	len = ft_strlen(map_file);
-	len = len - 4;
-	if (ft_strncmp(map_file + len, ".ber", 4))
-		return (0);
-	return (1);
-}
-
 void	*ft_free_map_file(int fd)
 {
 	char	*line;
@@ -69,14 +58,24 @@ void	*ft_free_map_file(int fd)
 
 void	*ft_handle_error(char *msg, t_map *map, int fd, char **grid)
 {
-	if (!msg)
-		return (NULL);
 	if (map)
 		ft_free_load_map(map);
 	if (fd)
 		ft_free_map_file(fd);
 	else if (grid)
 		ft_free_grid(grid);
-	ft_putendl_fd(msg, 2);
+	if (msg)
+		ft_putendl_fd(msg, 2);
 	return (NULL);
+}
+
+int	ft_check_extension_fd(char *map_file)
+{
+	size_t	len;
+
+	len = ft_strlen(map_file);
+	len = len - 4;
+	if (ft_strncmp(map_file + len, ".ber", 4))
+		return (0);
+	return (1);
 }

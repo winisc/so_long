@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_so_long_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: wsilveir <wsilveir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 11:40:05 by wsilveir          #+#    #+#             */
-/*   Updated: 2025/08/17 17:56:19 by wini             ###   ########.fr       */
+/*   Updated: 2025/08/24 18:07:02 by wsilveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void	ft_start_map(t_map *map)
 	map->grid = NULL;
 	map->px = 0;
 	map->py = 0;
+	map->ex = 0;
+	map->ey = 0;
 }
 
 char	*ft_strdup_nl(const char *src)
@@ -60,7 +62,7 @@ char	*ft_strdup_nl(const char *src)
 	return (str);
 }
 
-void	ft_count_components(char *current_row, t_map *map)
+void	ft_add_count_components(char *current_row, t_map *map)
 {
 	if (!current_row || !map)
 		return ;
@@ -84,10 +86,7 @@ int	ft_validate_components(char *current_row)
 	{
 		if (*current_row != 'C' && *current_row != '1' && *current_row != '0'
 			&& *current_row != 'E' && *current_row != 'P')
-		{
-			printf("%c\n", *current_row);
 			return (0);
-		}
 		current_row++;
 	}
 	return (1);

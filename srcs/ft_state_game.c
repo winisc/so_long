@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_state_game.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: wsilveir <wsilveir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 15:40:14 by wini              #+#    #+#             */
-/*   Updated: 2025/08/17 18:24:51 by wini             ###   ########.fr       */
+/*   Updated: 2025/08/24 17:47:08 by wsilveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@ int	ft_close_game(t_game *game)
 		mlx_destroy_image(game->mlx, game->img_floor);
 	if (game->img_player)
 		mlx_destroy_image(game->mlx, game->img_player);
-	if (game->img_exit)
-		mlx_destroy_image(game->mlx, game->img_exit);
+	if (game->img_exit_close)
+		mlx_destroy_image(game->mlx, game->img_exit_close);
+	if (game->img_exit_open)
+		mlx_destroy_image(game->mlx, game->img_exit_open);
 	if (game->img_collectible)
 		mlx_destroy_image(game->mlx, game->img_collectible);
 	if (game->win)
@@ -31,7 +33,8 @@ int	ft_close_game(t_game *game)
 		mlx_destroy_display(game->mlx);
 		free(game->mlx);
 	}
-	ft_free_load_map(game->map);
+	if (game->map)
+		ft_free_load_map(game->map);
 	exit(0);
 	return (0);
 }
