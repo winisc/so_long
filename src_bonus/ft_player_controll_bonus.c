@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_player_controll.c                               :+:      :+:    :+:   */
+/*   ft_player_controll_bonus.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wsilveir <wsilveir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 18:18:36 by wini              #+#    #+#             */
-/*   Updated: 2025/08/24 18:39:12 by wsilveir         ###   ########.fr       */
+/*   Updated: 2025/08/25 20:27:46 by wsilveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	ft_print_moves(int moves)
 {

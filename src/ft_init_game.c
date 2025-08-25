@@ -6,7 +6,7 @@
 /*   By: wsilveir <wsilveir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 10:38:23 by wini              #+#    #+#             */
-/*   Updated: 2025/08/24 18:36:12 by wsilveir         ###   ########.fr       */
+/*   Updated: 2025/08/25 19:27:02 by wsilveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,6 @@ int	ft_load_game(t_map *map)
 	ft_render_map(&game, map->grid);
 	mlx_key_hook(game.win, ft_key_hook, &game);
 	mlx_hook(game.win, 17, 0, ft_close_game, &game);
-	mlx_loop_hook(game.mlx, ft_handle_animation, &game);
 	mlx_loop(game.mlx);
 	return (1);
 }

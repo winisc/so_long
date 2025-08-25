@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_map.c                                     :+:      :+:    :+:   */
+/*   ft_check_map_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wsilveir <wsilveir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 18:49:11 by wini              #+#    #+#             */
-/*   Updated: 2025/08/24 18:08:48 by wsilveir         ###   ########.fr       */
+/*   Updated: 2025/08/25 20:27:30 by wsilveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 int	ft_check_rectangle_map(char *current_row, t_map *map)
 {

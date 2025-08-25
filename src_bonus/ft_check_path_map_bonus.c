@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_path_map.c                                :+:      :+:    :+:   */
+/*   ft_check_path_map_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wsilveir <wsilveir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 20:27:06 by wsilveir          #+#    #+#             */
-/*   Updated: 2025/08/24 17:48:59 by wsilveir         ###   ########.fr       */
+/*   Updated: 2025/08/25 20:27:36 by wsilveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	ft_fill_path(char **grid, t_map *map, size_t px, size_t py)
 {

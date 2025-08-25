@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_state_game.c                                    :+:      :+:    :+:   */
+/*   ft_state_game_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wsilveir <wsilveir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 15:40:14 by wini              #+#    #+#             */
-/*   Updated: 2025/08/24 18:40:52 by wsilveir         ###   ########.fr       */
+/*   Updated: 2025/08/25 20:32:43 by wsilveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 int	ft_close_game(t_game *game)
 {
@@ -60,7 +60,7 @@ int	ft_handle_animation(t_game *game)
 {
 	game->frame_counter++;
 
-	if (game->frame_counter >= 7000)
+	if (game->frame_counter >= 50000)
 	{
 		if (game->frame_controll == 1)
 		{

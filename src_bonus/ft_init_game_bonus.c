@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init_game.c                                     :+:      :+:    :+:   */
+/*   ft_init_game_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wsilveir <wsilveir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 10:38:23 by wini              #+#    #+#             */
-/*   Updated: 2025/08/24 18:36:12 by wsilveir         ###   ########.fr       */
+/*   Updated: 2025/08/25 20:32:04 by wsilveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	ft_render_image_to_grid(t_game *game, void *texture, size_t x, size_t y)
 {
@@ -47,31 +47,31 @@ void	ft_render_map(t_game *game, char **grid)
 int	ft_load_assets(t_game *game, int w, int h)
 {
 	game->img_wall = mlx_xpm_file_to_image(game->mlx,
-			"textures/wall.xpm", &w, &h);
+			"textures/bonus/wall.xpm", &w, &h);
 	if (!game->img_wall)
 		return (0);
 	game->img_floor = mlx_xpm_file_to_image(game->mlx,
-			"textures/floor.xpm", &w, &h);
+			"textures/bonus/floor.xpm", &w, &h);
 	if (!game->img_floor)
 		return (0);
 	game->img_player_anim_1 = mlx_xpm_file_to_image(game->mlx,
-			"textures/player_anim_1.xpm", &w, &h);
+			"textures/bonus/player_anim_1.xpm", &w, &h);
 	if (!game->img_player_anim_1)
 		return (0);
 	game->img_player_anim_2 = mlx_xpm_file_to_image(game->mlx,
-			"textures/player_anim_2.xpm", &w, &h);
+			"textures/bonus/player_anim_2.xpm", &w, &h);
 	if (!game->img_player_anim_2)
 		return (0);
 	game->img_exit_close = mlx_xpm_file_to_image(game->mlx,
-			"textures/exit_close.xpm", &w, &h);
+			"textures/bonus/exit_close.xpm", &w, &h);
 	if (!game->img_exit_close)
 		return (0);
 	game->img_exit_open = mlx_xpm_file_to_image(game->mlx,
-			"textures/exit_open.xpm", &w, &h);
+			"textures/bonus/exit_open.xpm", &w, &h);
 	if (!game->img_exit_open)
 		return (0);
 	game->img_collectible = mlx_xpm_file_to_image(game->mlx,
-			"textures/collectible.xpm", &w, &h);
+			"textures/bonus/collectible.xpm", &w, &h);
 	if (!game->img_collectible)
 		return (0);
 	return (1);
