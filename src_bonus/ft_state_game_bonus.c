@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_state_game_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wsilveir <wsilveir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 15:40:14 by wini              #+#    #+#             */
-/*   Updated: 2025/08/25 20:32:43 by wsilveir         ###   ########.fr       */
+/*   Updated: 2025/09/01 01:56:08 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,12 @@ int	ft_close_game(t_game *game)
 		mlx_destroy_image(game->mlx, game->img_player_anim_1);
 	if (game->img_player_anim_2)
 		mlx_destroy_image(game->mlx, game->img_player_anim_2);
+	if (game->img_player_anim_3)
+		mlx_destroy_image(game->mlx, game->img_player_anim_3);
+	if (game->img_player_anim_4)
+		mlx_destroy_image(game->mlx, game->img_player_anim_4);
+	if (game->img_player_anim_5)
+		mlx_destroy_image(game->mlx, game->img_player_anim_5);
 	if (game->img_exit_close)
 		mlx_destroy_image(game->mlx, game->img_exit_close);
 	if (game->img_exit_open)
@@ -60,17 +66,35 @@ int	ft_handle_animation(t_game *game)
 {
 	game->frame_counter++;
 
-	if (game->frame_counter >= 50000)
+	if (game->frame_counter >= 1000)
 	{
 		if (game->frame_controll == 1)
 		{
-			ft_render_image_to_grid(game, game->img_player_anim_2,
+			ft_render_image_to_grid(game, game->img_player_anim_1,
 				game->map->px, game->map->py);
 			game->frame_controll = 2;
 		}
+		else if (game->frame_controll == 2)
+		{
+			ft_render_image_to_grid(game, game->img_player_anim_2,
+				game->map->px, game->map->py);
+			game->frame_controll = 3;
+		}
+		else if (game->frame_controll == 3)
+		{
+			ft_render_image_to_grid(game, game->img_player_anim_3,
+				game->map->px, game->map->py);
+			game->frame_controll = 4;
+		}
+		else if (game->frame_controll == 4)
+		{
+			ft_render_image_to_grid(game, game->img_player_anim_4,
+				game->map->px, game->map->py);
+			game->frame_controll = 5;
+		}
 		else
 		{
-			ft_render_image_to_grid(game, game->img_player_anim_1,
+			ft_render_image_to_grid(game, game->img_player_anim_5,
 				game->map->px, game->map->py);
 			game->frame_controll = 1;
 		}

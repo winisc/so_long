@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init_game_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wsilveir <wsilveir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 10:38:23 by wini              #+#    #+#             */
-/*   Updated: 2025/08/25 20:32:04 by wsilveir         ###   ########.fr       */
+/*   Updated: 2025/09/01 01:43:12 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,18 @@ int	ft_load_assets(t_game *game, int w, int h)
 	game->img_player_anim_2 = mlx_xpm_file_to_image(game->mlx,
 			"textures/bonus/player_anim_2.xpm", &w, &h);
 	if (!game->img_player_anim_2)
+		return (0);
+	game->img_player_anim_3 = mlx_xpm_file_to_image(game->mlx,
+			"textures/bonus/player_anim_3.xpm", &w, &h);
+	if (!game->img_player_anim_3)
+		return (0);
+	game->img_player_anim_4 = mlx_xpm_file_to_image(game->mlx,
+			"textures/bonus/player_anim_4.xpm", &w, &h);
+	if (!game->img_player_anim_4)
+		return (0);
+	game->img_player_anim_5 = mlx_xpm_file_to_image(game->mlx,
+			"textures/bonus/player_anim_5.xpm", &w, &h);
+	if (!game->img_player_anim_5)
 		return (0);
 	game->img_exit_close = mlx_xpm_file_to_image(game->mlx,
 			"textures/bonus/exit_close.xpm", &w, &h);

@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wsilveir <wsilveir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 18:17:39 by wini              #+#    #+#             */
-/*   Updated: 2025/08/25 20:22:09 by wsilveir         ###   ########.fr       */
+/*   Updated: 2025/09/01 01:39:24 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
 # include "mlx.h"
 # include "libft.h"
@@ -19,7 +19,7 @@
 # include <fcntl.h>
 
 # ifndef TILE_SIZE
-#  define TILE_SIZE 64
+#  define TILE_SIZE 48
 # endif
 
 # ifndef GAME_NAME
@@ -47,16 +47,40 @@ typedef struct s_game
 	t_map	*map;
 	void	*img_wall;
 	void	*img_floor;
-	void	*img_player_anim_1;
-	void	*img_player_anim_2;
 	void	*img_exit_close;
 	void	*img_exit_open;
 	void	*img_collectible;
-	size_t	collectible_now;
-	int		moves_now;
+	void	*img_player_anim_1;
+	void	*img_player_anim_2;
+	void	*img_player_anim_3;
+	void	*img_player_anim_4;
+	void	*img_player_anim_5;
 	int		frame_controll;
 	int		frame_counter;
+	size_t	collectible_now;
+	int		moves_now;
 }	t_game;
+
+typedef struct s_player
+{
+	void	*img_player_anim_1;
+	void	*img_player_anim_2;
+	void	*img_player_anim_3;
+	int		frame_controll;
+	int		frame_counter;
+}	t_player;
+
+typedef struct s_enemy
+{
+	int		frame_controll;
+	int		frame_counter;
+}	t_enemy;
+
+typedef struct s_collectible
+{
+	int		frame_controll;
+	int		frame_counter;
+}	t_collectible;
 
 t_map	*ft_load_map(char *map_file);
 t_map	*ft_parse_map(int fd);
