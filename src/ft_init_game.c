@@ -6,16 +6,16 @@
 /*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 10:38:23 by wini              #+#    #+#             */
-/*   Updated: 2025/09/02 22:47:23 by wini             ###   ########.fr       */
+/*   Updated: 2025/09/02 23:50:11 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_render_image_to_grid(t_game *game, void *texture, size_t x, size_t y)
+void	ft_render_image_to_grid(t_game *game, void *assets, size_t x, size_t y)
 {
 	mlx_put_image_to_window(game->mlx, game->win,
-		texture, x * TILE_SIZE, y * TILE_SIZE);
+		assets, x * TILE_SIZE, y * TILE_SIZE);
 }
 
 void	ft_render_map(t_game *game, char **grid)
@@ -47,27 +47,27 @@ void	ft_render_map(t_game *game, char **grid)
 int	ft_load_assets(t_game *game, int w, int h)
 {
 	game->img_wall = mlx_xpm_file_to_image(game->mlx,
-			"textures/mandatory/wall.xpm", &w, &h);
+			"assets/mandatory/wall.xpm", &w, &h);
 	if (!game->img_wall)
 		return (0);
 	game->img_floor = mlx_xpm_file_to_image(game->mlx,
-			"textures/mandatory/floor.xpm", &w, &h);
+			"assets/mandatory/floor.xpm", &w, &h);
 	if (!game->img_floor)
 		return (0);
 	game->img_player = mlx_xpm_file_to_image(game->mlx,
-			"textures/mandatory/player.xpm", &w, &h);
+			"assets/mandatory/player.xpm", &w, &h);
 	if (!game->img_player)
 		return (0);
 	game->img_exit_close = mlx_xpm_file_to_image(game->mlx,
-			"textures/mandatory/exit_close.xpm", &w, &h);
+			"assets/mandatory/exit_close.xpm", &w, &h);
 	if (!game->img_exit_close)
 		return (0);
 	game->img_exit_open = mlx_xpm_file_to_image(game->mlx,
-			"textures/mandatory/exit_open.xpm", &w, &h);
+			"assets/mandatory/exit_open.xpm", &w, &h);
 	if (!game->img_exit_open)
 		return (0);
 	game->img_collectible = mlx_xpm_file_to_image(game->mlx,
-			"textures/mandatory/collectible.xpm", &w, &h);
+			"assets/mandatory/collectible.xpm", &w, &h);
 	if (!game->img_collectible)
 		return (0);
 	return (1);

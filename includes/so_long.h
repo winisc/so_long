@@ -6,7 +6,7 @@
 /*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 18:17:39 by wini              #+#    #+#             */
-/*   Updated: 2025/09/02 22:47:09 by wini             ###   ########.fr       */
+/*   Updated: 2025/09/02 23:49:04 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	ft_start_map(t_map *map);
 void	*ft_handle_error(char *msg, t_map *map, int fd, char **grid);
 void	ft_add_count_components(char *current_row, t_map *map);
 void	ft_player_move(t_game *game, char *direction);
-void	ft_render_image_to_grid(t_game *game, void *texture, size_t x,
+void	ft_render_image_to_grid(t_game *game, void *assets, size_t x,
 			size_t y);
 char	*ft_strdup_nl(const char *src);
 int		ft_check_path(t_map *map);
