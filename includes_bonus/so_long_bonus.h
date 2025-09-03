@@ -6,7 +6,7 @@
 /*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 18:17:39 by wini              #+#    #+#             */
-/*   Updated: 2025/09/01 01:39:24 by wini             ###   ########.fr       */
+/*   Updated: 2025/09/02 23:15:22 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,22 @@ typedef struct s_map
 	size_t	ey;
 }	t_map;
 
-typedef struct s_game
+typedef struct s_enemy
 {
-	void	*mlx;
-	void	*win;
-	t_map	*map;
-	void	*img_wall;
-	void	*img_floor;
-	void	*img_exit_close;
-	void	*img_exit_open;
-	void	*img_collectible;
+	void	*img_enemy_anim_1;
+	int		frame_controll;
+	int		frame_counter;
+}	t_enemy;
+
+typedef struct s_collectible
+{
+	void	*img_collectible_anim_1;
+	int		frame_controll;
+	int		frame_counter;
+}	t_collectible;
+
+typedef struct s_player
+{
 	void	*img_player_anim_1;
 	void	*img_player_anim_2;
 	void	*img_player_anim_3;
@@ -57,30 +63,24 @@ typedef struct s_game
 	void	*img_player_anim_5;
 	int		frame_controll;
 	int		frame_counter;
-	size_t	collectible_now;
 	int		moves_now;
-}	t_game;
-
-typedef struct s_player
-{
-	void	*img_player_anim_1;
-	void	*img_player_anim_2;
-	void	*img_player_anim_3;
-	int		frame_controll;
-	int		frame_counter;
 }	t_player;
 
-typedef struct s_enemy
+typedef struct s_game
 {
-	int		frame_controll;
-	int		frame_counter;
-}	t_enemy;
+	void			*mlx;
+	void			*win;
+	void			*img_wall;
+	void			*img_floor;
+	void			*img_exit_close;
+	void			*img_exit_open;
+	size_t			collectible_now;
+	t_map			*map;
+	t_player		*player;
+	t_enemy			*enemy;
+	t_collectible	*collectible;
 
-typedef struct s_collectible
-{
-	int		frame_controll;
-	int		frame_counter;
-}	t_collectible;
+}	t_game;
 
 t_map	*ft_load_map(char *map_file);
 t_map	*ft_parse_map(int fd);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init_game.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wsilveir <wsilveir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 10:38:23 by wini              #+#    #+#             */
-/*   Updated: 2025/08/25 19:27:02 by wsilveir         ###   ########.fr       */
+/*   Updated: 2025/09/02 22:47:23 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,6 @@ void	ft_start_game(t_game *game, t_map *map)
 	game->mlx = mlx_init();
 	game->win = mlx_new_window(game->mlx, map->width * TILE_SIZE,
 			map->height * TILE_SIZE, GAME_NAME);
-	game->frame_controll = 1;
-	game->frame_counter = 0;
 }
 
 int	ft_load_game(t_map *map)

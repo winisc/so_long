@@ -6,7 +6,7 @@
 /*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 18:17:39 by wini              #+#    #+#             */
-/*   Updated: 2025/09/01 02:08:00 by wini             ###   ########.fr       */
+/*   Updated: 2025/09/02 22:47:09 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,6 @@ typedef struct s_game
 	void	*img_collectible;
 	size_t	collectible_now;
 	int		moves_now;
-	int		frame_controll;
-	int		frame_counter;
 }	t_game;
 
 t_map	*ft_load_map(char *map_file);

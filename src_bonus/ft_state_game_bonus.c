@@ -6,7 +6,7 @@
 /*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 15:40:14 by wini              #+#    #+#             */
-/*   Updated: 2025/09/01 01:56:08 by wini             ###   ########.fr       */
+/*   Updated: 2025/09/02 23:21:27 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,22 @@ int	ft_close_game(t_game *game)
 		mlx_destroy_image(game->mlx, game->img_wall);
 	if (game->img_floor)
 		mlx_destroy_image(game->mlx, game->img_floor);
-	if (game->img_player_anim_1)
-		mlx_destroy_image(game->mlx, game->img_player_anim_1);
-	if (game->img_player_anim_2)
-		mlx_destroy_image(game->mlx, game->img_player_anim_2);
-	if (game->img_player_anim_3)
-		mlx_destroy_image(game->mlx, game->img_player_anim_3);
-	if (game->img_player_anim_4)
-		mlx_destroy_image(game->mlx, game->img_player_anim_4);
-	if (game->img_player_anim_5)
-		mlx_destroy_image(game->mlx, game->img_player_anim_5);
+	if (game->player->img_player_anim_1)
+		mlx_destroy_image(game->mlx, game->player->img_player_anim_1);
+	if (game->player->img_player_anim_2)
+		mlx_destroy_image(game->mlx, game->player->img_player_anim_2);
+	if (game->player->img_player_anim_3)
+		mlx_destroy_image(game->mlx, game->player->img_player_anim_3);
+	if (game->player->img_player_anim_4)
+		mlx_destroy_image(game->mlx, game->player->img_player_anim_4);
+	if (game->player->img_player_anim_5)
+		mlx_destroy_image(game->mlx, game->player->img_player_anim_5);
 	if (game->img_exit_close)
 		mlx_destroy_image(game->mlx, game->img_exit_close);
 	if (game->img_exit_open)
 		mlx_destroy_image(game->mlx, game->img_exit_open);
-	if (game->img_collectible)
-		mlx_destroy_image(game->mlx, game->img_collectible);
+	if (game->collectible->img_collectible_anim_1)
+		mlx_destroy_image(game->mlx, game->collectible->img_collectible_anim_1);
 	if (game->win)
 		mlx_destroy_window(game->mlx, game->win);
 	if (game->mlx)
@@ -43,6 +43,12 @@ int	ft_close_game(t_game *game)
 	}
 	if (game->map)
 		ft_free_load_map(game->map);
+	if (game->player)
+		free(game->player);
+	if (game->enemy)
+		free(game->enemy);
+	if (game->collectible)
+		free(game->collectible);
 	exit(0);
 	return (0);
 }
@@ -64,42 +70,41 @@ int	ft_key_hook(int keycode, t_game *game)
 
 int	ft_handle_animation(t_game *game)
 {
-	game->frame_counter++;
+	game->player->frame_counter++;
 
-	if (game->frame_counter >= 1000)
+	if (game->player->frame_counter >= 3000)
 	{
-		if (game->frame_controll == 1)
+		if (game->player->frame_controll == 1)
 		{
-			ft_render_image_to_grid(game, game->img_player_anim_1,
+			ft_render_image_to_grid(game, game->player->img_player_anim_1,
 				game->map->px, game->map->py);
-			game->frame_controll = 2;
+			game->player->frame_controll = 2;
 		}
-		else if (game->frame_controll == 2)
+		else if (game->player->frame_controll == 2)
 		{
-			ft_render_image_to_grid(game, game->img_player_anim_2,
+			ft_render_image_to_grid(game, game->player->img_player_anim_2,
 				game->map->px, game->map->py);
-			game->frame_controll = 3;
+			game->player->frame_controll = 3;
 		}
-		else if (game->frame_controll == 3)
+		else if (game->player->frame_controll == 3)
 		{
-			ft_render_image_to_grid(game, game->img_player_anim_3,
+			ft_render_image_to_grid(game, game->player->img_player_anim_3,
 				game->map->px, game->map->py);
-			game->frame_controll = 4;
+			game->player->frame_controll = 4;
 		}
-		else if (game->frame_controll == 4)
+		else if (game->player->frame_controll == 4)
 		{
-			ft_render_image_to_grid(game, game->img_player_anim_4,
+			ft_render_image_to_grid(game, game->player->img_player_anim_4,
 				game->map->px, game->map->py);
-			game->frame_controll = 5;
+			game->player->frame_controll = 5;
 		}
 		else
 		{
-			ft_render_image_to_grid(game, game->img_player_anim_5,
+			ft_render_image_to_grid(game, game->player->img_player_anim_5,
 				game->map->px, game->map->py);
-			game->frame_controll = 1;
+			game->player->frame_controll = 1;
 		}
-		game->frame_counter = 0;
+		game->player->frame_counter = 0;
 	}
 	return (0);
 }
-

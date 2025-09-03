@@ -6,7 +6,7 @@
 /*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 10:38:23 by wini              #+#    #+#             */
-/*   Updated: 2025/09/01 01:43:12 by wini             ###   ########.fr       */
+/*   Updated: 2025/09/02 23:19:23 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,11 @@ void	ft_render_map(t_game *game, char **grid)
 			if (grid[y][x] == '1')
 				ft_render_image_to_grid(game, game->img_wall, x, y);
 			else if (grid[y][x] == 'P')
-				ft_render_image_to_grid(game, game->img_player_anim_1, x, y);
+				ft_render_image_to_grid(game, game->player->img_player_anim_1,
+					x, y);
 			else if (grid[y][x] == 'C')
-				ft_render_image_to_grid(game, game->img_collectible, x, y);
+				ft_render_image_to_grid(game,
+					game->collectible->img_collectible_anim_1, x, y);
 			else if (grid[y][x] == 'E')
 				ft_render_image_to_grid(game, game->img_exit_close, x, y);
 			x++;
@@ -54,25 +56,25 @@ int	ft_load_assets(t_game *game, int w, int h)
 			"textures/bonus/floor.xpm", &w, &h);
 	if (!game->img_floor)
 		return (0);
-	game->img_player_anim_1 = mlx_xpm_file_to_image(game->mlx,
+	game->player->img_player_anim_1 = mlx_xpm_file_to_image(game->mlx,
 			"textures/bonus/player_anim_1.xpm", &w, &h);
-	if (!game->img_player_anim_1)
+	if (!game->player->img_player_anim_1)
 		return (0);
-	game->img_player_anim_2 = mlx_xpm_file_to_image(game->mlx,
+	game->player->img_player_anim_2 = mlx_xpm_file_to_image(game->mlx,
 			"textures/bonus/player_anim_2.xpm", &w, &h);
-	if (!game->img_player_anim_2)
+	if (!game->player->img_player_anim_2)
 		return (0);
-	game->img_player_anim_3 = mlx_xpm_file_to_image(game->mlx,
+	game->player->img_player_anim_3 = mlx_xpm_file_to_image(game->mlx,
 			"textures/bonus/player_anim_3.xpm", &w, &h);
-	if (!game->img_player_anim_3)
+	if (!game->player->img_player_anim_3)
 		return (0);
-	game->img_player_anim_4 = mlx_xpm_file_to_image(game->mlx,
+	game->player->img_player_anim_4 = mlx_xpm_file_to_image(game->mlx,
 			"textures/bonus/player_anim_4.xpm", &w, &h);
-	if (!game->img_player_anim_4)
+	if (!game->player->img_player_anim_4)
 		return (0);
-	game->img_player_anim_5 = mlx_xpm_file_to_image(game->mlx,
+	game->player->img_player_anim_5 = mlx_xpm_file_to_image(game->mlx,
 			"textures/bonus/player_anim_5.xpm", &w, &h);
-	if (!game->img_player_anim_5)
+	if (!game->player->img_player_anim_5)
 		return (0);
 	game->img_exit_close = mlx_xpm_file_to_image(game->mlx,
 			"textures/bonus/exit_close.xpm", &w, &h);
@@ -82,30 +84,73 @@ int	ft_load_assets(t_game *game, int w, int h)
 			"textures/bonus/exit_open.xpm", &w, &h);
 	if (!game->img_exit_open)
 		return (0);
-	game->img_collectible = mlx_xpm_file_to_image(game->mlx,
+	game->collectible->img_collectible_anim_1 = mlx_xpm_file_to_image(game->mlx,
 			"textures/bonus/collectible.xpm", &w, &h);
-	if (!game->img_collectible)
+	if (!game->collectible->img_collectible_anim_1)
 		return (0);
 	return (1);
 }
 
-void	ft_start_game(t_game *game, t_map *map)
+static void ft_init_images_null(t_game *game)
+{
+    game->img_wall = NULL;
+    game->img_floor = NULL;
+    game->img_exit_close = NULL;
+    game->img_exit_open = NULL;
+    if (game->player)
+    {
+        game->player->img_player_anim_1 = NULL;
+        game->player->img_player_anim_2 = NULL;
+        game->player->img_player_anim_3 = NULL;
+        game->player->img_player_anim_4 = NULL;
+        game->player->img_player_anim_5 = NULL;
+        game->player->frame_controll = 0;
+        game->player->frame_counter = 0;
+        game->player->moves_now = 0;
+    }
+    if (game->collectible)
+    {
+        game->collectible->img_collectible_anim_1 = NULL;
+        game->collectible->frame_controll = 0;
+        game->collectible->frame_counter = 0;
+    }
+    if (game->enemy)
+    {
+        game->enemy->img_enemy_anim_1 = NULL;
+        game->enemy->frame_controll = 0;
+        game->enemy->frame_counter = 0;
+    }
+}
+
+int	ft_start_game(t_game *game, t_map *map)
 {
 	game->map = map;
 	game->collectible_now = 0;
-	game->moves_now = 0;
 	game->mlx = mlx_init();
 	game->win = mlx_new_window(game->mlx, map->width * TILE_SIZE,
 			map->height * TILE_SIZE, GAME_NAME);
-	game->frame_controll = 1;
-	game->frame_counter = 0;
+	game->player = malloc(sizeof(t_player));
+	if (!game->player)
+		return (0);
+	game->enemy = malloc(sizeof(t_enemy));
+	if (!game->enemy)
+		return (0);
+	game->collectible = malloc(sizeof(t_collectible));
+	if (!game->collectible)
+		return (0);
+	ft_init_images_null(game);
+	return (1);
 }
 
 int	ft_load_game(t_map *map)
 {
 	t_game	game;
 
-	ft_start_game(&game, map);
+	if (!ft_start_game(&game, map))
+	{
+		ft_putendl_fd("Error\nInital allocated failed!", 2);
+		return (ft_close_game(&game));
+	}
 	if (!ft_load_assets(&game, map->width, map->height))
 	{
 		ft_putendl_fd("Error\nLoad assets failed!", 2);
