@@ -16,7 +16,7 @@ void	ft_fill_path(char **grid, t_map *map, size_t player_x, size_t player_y)
 {
 	if (player_y >= (map->height - 1) || player_x >= (map->width - 1))
 		return ;
-	if (grid[player_y][player_x] == '1' || grid[player_y][player_x] == 'F')
+	if (grid[player_y][player_x] == '1' || grid[player_y][player_x] == 'F' || grid[player_y][player_x] == 'T')
 		return ;
 	if (grid[player_y][player_x] == 'E')
 	{

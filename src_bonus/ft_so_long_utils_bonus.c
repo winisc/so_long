@@ -85,7 +85,7 @@ int	ft_validate_components(char *current_row)
 	while (*current_row)
 	{
 		if (*current_row != 'C' && *current_row != '1' && *current_row != '0'
-			&& *current_row != 'E' && *current_row != 'P')
+			&& *current_row != 'E' && *current_row != 'P' && *current_row != 'T')
 			return (0);
 		current_row++;
 	}

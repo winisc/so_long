@@ -42,7 +42,10 @@ SRC_BONUS = $(SRC_DIR_BONUS)/main_bonus.c \
 	$(SRC_DIR_BONUS)/ft_map_erros_bonus.c \
 	$(SRC_DIR_BONUS)/ft_init_game_bonus.c \
 	$(SRC_DIR_BONUS)/ft_state_game_bonus.c \
-	$(SRC_DIR_BONUS)/ft_player_controll_bonus.c
+	$(SRC_DIR_BONUS)/ft_player_controll_bonus.c \
+	$(SRC_DIR_BONUS)/ft_animation_controll.c \
+	$(SRC_DIR_BONUS)/ft_enemy_controll.c \
+	$(SRC_DIR_BONUS)/ft_load_assets.c
 
 OBJS = $(SRC:.c=.o)
 OBJS_BONUS = $(SRC_BONUS:.c=.o)
