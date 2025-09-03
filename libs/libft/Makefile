@@ -36,7 +36,7 @@ $(NAME): $(OBJS)
 	ar rcs $@ $^
 
 %.o: %.c
-	$(CC) $(FLAGS) -I $(HDRS) -c $< -o $@
+	$(CC) $(FLAGS) -I . -c $< -o $@
 
 clean:
 	rm -f $(OBJS) $(BONUS_OBJS)

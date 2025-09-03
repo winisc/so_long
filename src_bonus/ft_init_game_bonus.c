@@ -39,7 +39,7 @@ void	ft_render_map(t_game *game, char **grid)
 				ft_render_image_to_grid(game,
 					game->collectible->img_collectible_anim_1, x, y);
 			else if (grid[y][x] == 'E')
-				ft_render_image_to_grid(game, game->img_exit_close, x, y);
+				ft_render_image_to_grid(game, game->exit->img_exit_close, x, y);
 			x++;
 		}
 		y++;
@@ -76,13 +76,13 @@ int	ft_load_assets(t_game *game, int w, int h)
 			"assets/bonus/player_anim_5.xpm", &w, &h);
 	if (!game->player->img_player_anim_5)
 		return (0);
-	game->img_exit_close = mlx_xpm_file_to_image(game->mlx,
+	game->exit->img_exit_close = mlx_xpm_file_to_image(game->mlx,
 			"assets/bonus/exit_close.xpm", &w, &h);
-	if (!game->img_exit_close)
+	if (!game->exit->img_exit_close)
 		return (0);
-	game->img_exit_open = mlx_xpm_file_to_image(game->mlx,
+	game->exit->img_exit_open = mlx_xpm_file_to_image(game->mlx,
 			"assets/bonus/exit_open.xpm", &w, &h);
-	if (!game->img_exit_open)
+	if (!game->exit->img_exit_open)
 		return (0);
 	game->collectible->img_collectible_anim_1 = mlx_xpm_file_to_image(game->mlx,
 			"assets/bonus/collectible.xpm", &w, &h);
@@ -95,8 +95,6 @@ static void ft_init_images_null(t_game *game)
 {
     game->img_wall = NULL;
     game->img_floor = NULL;
-    game->img_exit_close = NULL;
-    game->img_exit_open = NULL;
     if (game->player)
     {
         game->player->img_player_anim_1 = NULL;
@@ -120,6 +118,13 @@ static void ft_init_images_null(t_game *game)
         game->enemy->frame_controll = 0;
         game->enemy->frame_counter = 0;
     }
+    if (game->exit)
+    {
+        game->exit->img_exit_close = NULL;
+        game->exit->img_exit_open = NULL;
+        game->exit->frame_controll = 0;
+        game->exit->frame_counter = 0;
+    }
 }
 
 int	ft_start_game(t_game *game, t_map *map)
@@ -137,6 +142,9 @@ int	ft_start_game(t_game *game, t_map *map)
 		return (0);
 	game->collectible = malloc(sizeof(t_collectible));
 	if (!game->collectible)
+		return (0);
+	game->exit = malloc(sizeof(t_collectible));
+	if (!game->exit)
 		return (0);
 	ft_init_images_null(game);
 	return (1);

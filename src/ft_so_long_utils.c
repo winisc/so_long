@@ -34,10 +34,10 @@ void	ft_start_map(t_map *map)
 	map->count_player = 0;
 	map->count_exit = 0;
 	map->grid = NULL;
-	map->px = 0;
-	map->py = 0;
-	map->ex = 0;
-	map->ey = 0;
+	map->player_x = 0;
+	map->player_y = 0;
+	map->exit_x = 0;
+	map->exit_y = 0;
 }
 
 char	*ft_strdup_nl(const char *src)

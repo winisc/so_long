@@ -34,10 +34,10 @@ typedef struct s_map
 	size_t	count_player;
 	size_t	count_exit;
 	char	**grid;
-	size_t	px;
-	size_t	py;
-	size_t	ex;
-	size_t	ey;
+	size_t	player_x;
+	size_t	player_y;
+	size_t	exit_x;
+	size_t	exit_y;
 }	t_map;
 
 typedef struct s_game

@@ -34,10 +34,10 @@ typedef struct s_map
 	size_t	count_player;
 	size_t	count_exit;
 	char	**grid;
-	size_t	px;
-	size_t	py;
-	size_t	ex;
-	size_t	ey;
+	size_t	player_x;
+	size_t	player_y;
+	size_t	exit_x;
+	size_t	exit_y;
 }	t_map;
 
 typedef struct s_enemy
@@ -53,6 +53,14 @@ typedef struct s_collectible
 	int		frame_controll;
 	int		frame_counter;
 }	t_collectible;
+
+typedef struct s_exit
+{
+	void	*img_exit_close;
+	void	*img_exit_open;
+	int		frame_controll;
+	int		frame_counter;
+}	t_exit;
 
 typedef struct s_player
 {
@@ -72,12 +80,11 @@ typedef struct s_game
 	void			*win;
 	void			*img_wall;
 	void			*img_floor;
-	void			*img_exit_close;
-	void			*img_exit_open;
 	size_t			collectible_now;
 	t_map			*map;
 	t_player		*player;
 	t_enemy			*enemy;
+	t_exit			*exit;
 	t_collectible	*collectible;
 
 }	t_game;

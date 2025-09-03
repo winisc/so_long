@@ -12,26 +12,26 @@
 
 #include "so_long.h"
 
-void	ft_fill_path(char **grid, t_map *map, size_t px, size_t py)
+void	ft_fill_path(char **grid, t_map *map, size_t player_x, size_t player_y)
 {
-	if (py >= (map->height - 1) || px >= (map->width - 1))
+	if (player_y >= (map->height - 1) || player_x >= (map->width - 1))
 		return ;
-	if (grid[py][px] == '1' || grid[py][px] == 'F')
+	if (grid[player_y][player_x] == '1' || grid[player_y][player_x] == 'F')
 		return ;
-	if (grid[py][px] == 'E')
+	if (grid[player_y][player_x] == 'E')
 	{
-		map->ex = px;
-		map->ey = py;
-		grid[py][px] = 'F';
+		map->exit_x = player_x;
+		map->exit_y = player_y;
+		grid[player_y][player_x] = 'F';
 		return ;
 	}
-	grid[py][px] = 'F';
-	if (px > 0)
-		ft_fill_path(grid, map, px - 1, py);
-	ft_fill_path(grid, map, px + 1, py);
-	if (py > 0)
-		ft_fill_path(grid, map, px, py - 1);
-	ft_fill_path(grid, map, px, py + 1);
+	grid[player_y][player_x] = 'F';
+	if (player_x > 0)
+		ft_fill_path(grid, map, player_x - 1, player_y);
+	ft_fill_path(grid, map, player_x + 1, player_y);
+	if (player_y > 0)
+		ft_fill_path(grid, map, player_x, player_y - 1);
+	ft_fill_path(grid, map, player_x, player_y + 1);
 }
 
 char	**ft_copy_grid(char **grid)
@@ -60,7 +60,7 @@ char	**ft_copy_grid(char **grid)
 	return (copy);
 }
 
-void	ft_find_player(t_map *map, size_t *px, size_t *py)
+void	ft_find_player(t_map *map, size_t *player_x, size_t *player_y)
 {
 	size_t	y;
 	size_t	x;
@@ -73,10 +73,10 @@ void	ft_find_player(t_map *map, size_t *px, size_t *py)
 		{
 			if (map->grid[y][x] == 'P')
 			{
-				*px = x;
-				*py = y;
-				map->px = x;
-				map->py = y;
+				*player_x = x;
+				*player_y = y;
+				map->player_x = x;
+				map->player_y = y;
 				return ;
 			}
 			x++;
