@@ -70,6 +70,10 @@ int	ft_load_assets(t_game *game, int w, int h)
 			"assets/bonus/exit_close/exit_close.xpm", &w, &h);
 	if (!game->exit->img_exit_close)
 		return (0);
+	game->enemy->img_enemy_anim_1 = mlx_xpm_file_to_image(game->mlx,
+			"assets/bonus/enemy/enemy.xpm", &w, &h);
+	if (!game->enemy->img_enemy_anim_1)
+		return (0);
 	game->collectible->img_collectible_anim_1 = mlx_xpm_file_to_image(game->mlx,
 			"assets/bonus/collectible.xpm", &w, &h);
 	if (!game->collectible->img_collectible_anim_1)

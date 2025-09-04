@@ -29,11 +29,16 @@ void	ft_render_move(t_game *game, size_t move_x, size_t move_y)
 		move_x, move_y);
 }
 
-void	ft_open_exit(t_game *game)
+void	ft_collected_claim(t_game *game, size_t move_x, size_t move_y)
 {
-	ft_render_image_to_grid(game, game->exit->frames_open[0], game->map->exit_x,
-		game->map->exit_y);
-	game->exit->open = 1;
+	game->collectible_now++;
+	if (game->collectible_now == game->map->count_collectibles)
+	{
+		ft_render_image_to_grid(game, game->exit->frames_open[0], game->map->exit_x,
+			game->map->exit_y);
+		game->exit->open = 1;
+	}
+	game->map->grid[move_y][move_x] = '0';
 }
 
 void	ft_attempt_to_move(size_t move_x, size_t move_y, t_game *game)
@@ -44,12 +49,9 @@ void	ft_attempt_to_move(size_t move_x, size_t move_y, t_game *game)
 	if (grid[move_y][move_x] == '1')
 		return ;
 	else if (grid[move_y][move_x] == 'C')
-	{
-		game->collectible_now++;
-		if (game->collectible_now == game->map->count_collectibles)
-			ft_open_exit(game);
-		grid[move_y][move_x] = '0';
-	}
+		ft_collected_claim(game, move_x, move_y);
+	else if (grid[move_y][move_x] == 'T')
+		ft_close_game(game);
 	else if (grid[move_y][move_x] == 'E')
 	{
 		if (game->collectible_now == game->map->count_collectibles)

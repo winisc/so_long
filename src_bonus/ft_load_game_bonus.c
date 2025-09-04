@@ -33,13 +33,14 @@ void	ft_render_map(t_game *game, char **grid)
 			if (grid[y][x] == '1')
 				ft_render_image_to_grid(game, game->img_wall, x, y);
 			else if (grid[y][x] == 'P')
-				ft_render_image_to_grid(game, game->player->frames[0],
-					x, y);
+				ft_render_image_to_grid(game, game->player->frames[0], x, y);
 			else if (grid[y][x] == 'C')
 				ft_render_image_to_grid(game,
 					game->collectible->img_collectible_anim_1, x, y);
 			else if (grid[y][x] == 'E')
 				ft_render_image_to_grid(game, game->exit->img_exit_close, x, y);
+			else if (grid[y][x] == 'T')
+				ft_render_image_to_grid(game, game->enemy->img_enemy_anim_1, x, y);
 			x++;
 		}
 		y++;
