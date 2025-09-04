@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: wsilveir <wsilveir@student.42.fr>          +#+  +:+       +#+         #
+#    By: wini <wini@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/07 19:14:29 by wini              #+#    #+#              #
-#    Updated: 2025/09/03 21:47:44 by wsilveir         ###   ########.fr        #
+#    Updated: 2025/09/04 02:34:08 by wini             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = so_long
 NAME_BONUS = so_long_bonus
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g2 -O0 -fsanitize=leak
+CFLAGS = -Wall -Wextra -Werror -g
 
 SRC_DIR = src
 SRC_DIR_BONUS = src_bonus
@@ -30,7 +30,7 @@ SRC = $(SRC_DIR)/main.c \
 	$(SRC_DIR)/ft_so_long_utils.c \
 	$(SRC_DIR)/ft_check_path_map.c \
 	$(SRC_DIR)/ft_map_erros.c \
-	$(SRC_DIR)/ft_init_game.c \
+	$(SRC_DIR)/ft_load_game.c \
 	$(SRC_DIR)/ft_state_game.c \
 	$(SRC_DIR)/ft_player_controll.c
 
@@ -40,12 +40,14 @@ SRC_BONUS = $(SRC_DIR_BONUS)/main_bonus.c \
 	$(SRC_DIR_BONUS)/ft_so_long_utils_bonus.c \
 	$(SRC_DIR_BONUS)/ft_check_path_map_bonus.c \
 	$(SRC_DIR_BONUS)/ft_map_erros_bonus.c \
-	$(SRC_DIR_BONUS)/ft_init_game_bonus.c \
+	$(SRC_DIR_BONUS)/ft_load_game_bonus.c \
 	$(SRC_DIR_BONUS)/ft_state_game_bonus.c \
 	$(SRC_DIR_BONUS)/ft_player_controll_bonus.c \
 	$(SRC_DIR_BONUS)/ft_animation_controll.c \
 	$(SRC_DIR_BONUS)/ft_enemy_controll.c \
-	$(SRC_DIR_BONUS)/ft_load_assets.c
+	$(SRC_DIR_BONUS)/ft_init_entitys.c \
+	$(SRC_DIR_BONUS)/ft_load_assets.c \
+	$(SRC_DIR_BONUS)/ft_close_game.c \
 
 OBJS = $(SRC:.c=.o)
 OBJS_BONUS = $(SRC_BONUS:.c=.o)

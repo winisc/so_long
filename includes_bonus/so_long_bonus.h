@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wsilveir <wsilveir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 18:17:39 by wini              #+#    #+#             */
-/*   Updated: 2025/09/03 22:06:59 by wsilveir         ###   ########.fr       */
+/*   Updated: 2025/09/04 02:31:13 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # endif
 
 # ifndef FRAME_RATE
-#  define FRAME_RATE 20000
+#  define FRAME_RATE 5000
 # endif
 
 # ifndef GAME_NAME
@@ -60,23 +60,16 @@ typedef struct s_collectible
 
 typedef struct s_exit
 {
-	void	*img_exit_close_anim_1;
-	void	*img_exit_close_anim_2;
-	void	*img_exit_close_anim_3;
-	void	*img_exit_close_anim_4;
-	void	*img_exit_close_anim_5;
-	void	*img_exit_open;
+	void	*frames_open[5];
+	void	*img_exit_close;
 	int		frame_controll;
 	int		frame_counter;
+	int		open;
 }	t_exit;
 
 typedef struct s_player
 {
-	void	*img_player_anim_1;
-	void	*img_player_anim_2;
-	void	*img_player_anim_3;
-	void	*img_player_anim_4;
-	void	*img_player_anim_5;
+	void	*frames[5];
 	int		frame_controll;
 	int		frame_counter;
 	int		moves_now;
@@ -118,5 +111,9 @@ int		ft_key_hook(int keycode, t_game *game);
 int		ft_validate_components(char *current_row);
 
 int		ft_handle_animation(t_game *game);
+void	ft_handle_player_animation(t_game *game);
+void	ft_handle_exit_animation(t_game *game);
+int		ft_load_assets(t_game *game, int w, int h);
+void	ft_init_entitys(t_game *game);
 
 #endif

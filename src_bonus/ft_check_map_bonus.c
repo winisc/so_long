@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_map_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wsilveir <wsilveir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 18:49:11 by wini              #+#    #+#             */
-/*   Updated: 2025/08/25 20:27:30 by wsilveir         ###   ########.fr       */
+/*   Updated: 2025/09/04 02:33:35 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ int	ft_create_map_grid(t_map *map, t_list **lst_grid)
 		grid[i] = ft_strdup((char *)(tmp)->content);
 		if (!grid[i])
 		{
+			ft_free_grid(grid);
 			ft_lstclear(lst_grid, free);
 			return (0);
 		}
