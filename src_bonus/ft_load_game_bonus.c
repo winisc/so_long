@@ -47,8 +47,10 @@ void	ft_render_map(t_game *game, char **grid)
 	}
 }
 
-int	ft_start_game(t_game *game, t_map *map)
+int	ft_start_entity_game(t_game *game, t_map *map)
 {
+	game->frame_controll = 0;
+	game->frame_counter = 0;
 	game->map = map;
 	game->collectible_now = 0;
 	game->mlx = mlx_init();
@@ -74,7 +76,7 @@ int	ft_load_game(t_map *map)
 {
 	t_game	game;
 
-	if (!ft_start_game(&game, map))
+	if (!ft_start_entity_game(&game, map))
 	{
 		ft_putendl_fd("Error\nInital allocated failed!", 2);
 		return (ft_close_game(&game));
@@ -84,10 +86,11 @@ int	ft_load_game(t_map *map)
 		ft_putendl_fd("Error\nLoad assets failed!", 2);
 		return (ft_close_game(&game));
 	}
+	ft_save_enemy_positions(&game);
 	ft_render_map(&game, map->grid);
 	mlx_key_hook(game.win, ft_key_hook, &game);
 	mlx_hook(game.win, 17, 0, ft_close_game, &game);
-	mlx_loop_hook(game.mlx, ft_handle_animation, &game);
+	mlx_loop_hook(game.mlx, ft_controll_state_game, &game);
 	mlx_loop(game.mlx);
 	return (1);
 }

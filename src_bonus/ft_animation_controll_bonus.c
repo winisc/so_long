@@ -43,3 +43,9 @@ void	ft_handle_exit_animation(t_game *game)
 		game->exit->frame_counter = 0;
 	}
 }
+
+void	ft_handle_animation(t_game *game)
+{
+	ft_handle_player_animation(game);
+	ft_handle_exit_animation(game);
+}

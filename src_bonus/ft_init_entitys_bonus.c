@@ -45,6 +45,8 @@ void	ft_init_enemy(t_game *game)
 	game->enemy->img_enemy_anim_1 = NULL;
 	game->enemy->frame_controll = 0;
 	game->enemy->frame_counter = 0;
+	game->enemy->enemy_x = NULL;
+	game->enemy->enemy_y = NULL;
 }
 
 void	ft_init_exit(t_game *game)

@@ -35,6 +35,7 @@ typedef struct s_map
 	size_t	width;
 	size_t	height;
 	size_t	count_collectibles;
+	size_t	count_enemys;
 	size_t	count_player;
 	size_t	count_exit;
 	char	**grid;
@@ -49,6 +50,8 @@ typedef struct s_enemy
 	void	*img_enemy_anim_1;
 	int		frame_controll;
 	int		frame_counter;
+	int		*enemy_x;
+	int		*enemy_y;
 }	t_enemy;
 
 typedef struct s_collectible
@@ -87,6 +90,8 @@ typedef struct s_game
 	t_enemy			*enemy;
 	t_exit			*exit;
 	t_collectible	*collectible;
+	int				frame_controll;
+	int				frame_counter;
 
 }	t_game;
 
@@ -110,10 +115,13 @@ int		ft_close_game(t_game *game);
 int		ft_key_hook(int keycode, t_game *game);
 int		ft_validate_components(char *current_row);
 
-int		ft_handle_animation(t_game *game);
+void		ft_handle_animation(t_game *game);
 void	ft_handle_player_animation(t_game *game);
 void	ft_handle_exit_animation(t_game *game);
 int		ft_load_assets(t_game *game, int w, int h);
 void	ft_init_entitys(t_game *game);
+int		ft_controll_state_game(t_game *game);
+int		ft_save_enemy_positions(t_game *game);
+void	ft_move_enemy_controll(t_game *game);
 
 #endif

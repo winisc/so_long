@@ -27,9 +27,14 @@ int	ft_key_hook(int keycode, t_game *game)
 	return (0);
 }
 
-int	ft_handle_animation(t_game *game)
+int ft_controll_state_game(t_game *game)
 {
-	ft_handle_player_animation(game);
-	ft_handle_exit_animation(game);
-	return (0);
+	ft_handle_animation(game);
+	game->frame_counter++;
+	if (game->frame_counter >= FRAME_RATE)
+	{
+		ft_move_enemy_controll(game);
+		game->frame_counter = 0;
+	}
+	return (1);
 }

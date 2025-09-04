@@ -31,6 +31,7 @@ void	ft_start_map(t_map *map)
 	map->width = 0;
 	map->height = 0;
 	map->count_collectibles = 0;
+	map->count_enemys = 0;
 	map->count_player = 0;
 	map->count_exit = 0;
 	map->grid = NULL;
@@ -74,6 +75,8 @@ void	ft_add_count_components(char *current_row, t_map *map)
 			map->count_player++;
 		if (*current_row == 'E')
 			map->count_exit++;
+		if (*current_row == 'T')
+			map->count_enemys++;
 		current_row++;
 	}
 }
