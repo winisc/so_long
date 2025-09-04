@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init_game_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: wsilveir <wsilveir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 10:38:23 by wini              #+#    #+#             */
-/*   Updated: 2025/09/02 23:50:11 by wini             ###   ########.fr       */
+/*   Updated: 2025/09/03 21:56:34 by wsilveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	ft_render_map(t_game *game, char **grid)
 				ft_render_image_to_grid(game,
 					game->collectible->img_collectible_anim_1, x, y);
 			else if (grid[y][x] == 'E')
-				ft_render_image_to_grid(game, game->exit->img_exit_close, x, y);
+				ft_render_image_to_grid(game, game->exit->img_exit_close_anim_1, x, y);
 			x++;
 		}
 		y++;
@@ -76,9 +76,25 @@ int	ft_load_assets(t_game *game, int w, int h)
 			"assets/bonus/player_anim_5.xpm", &w, &h);
 	if (!game->player->img_player_anim_5)
 		return (0);
-	game->exit->img_exit_close = mlx_xpm_file_to_image(game->mlx,
-			"assets/bonus/exit_close.xpm", &w, &h);
-	if (!game->exit->img_exit_close)
+	game->exit->img_exit_close_anim_1 = mlx_xpm_file_to_image(game->mlx,
+			"assets/bonus/exit_close_anim_1.xpm", &w, &h);
+	if (!game->exit->img_exit_close_anim_1)
+		return (0);
+	game->exit->img_exit_close_anim_2 = mlx_xpm_file_to_image(game->mlx,
+			"assets/bonus/exit_close_anim_2.xpm", &w, &h);
+	if (!game->exit->img_exit_close_anim_2)
+		return (0);
+	game->exit->img_exit_close_anim_3 = mlx_xpm_file_to_image(game->mlx,
+			"assets/bonus/exit_close_anim_3.xpm", &w, &h);
+	if (!game->exit->img_exit_close_anim_3)
+		return (0);
+	game->exit->img_exit_close_anim_4 = mlx_xpm_file_to_image(game->mlx,
+			"assets/bonus/exit_close_anim_4.xpm", &w, &h);
+	if (!game->exit->img_exit_close_anim_4)
+		return (0);
+	game->exit->img_exit_close_anim_5 = mlx_xpm_file_to_image(game->mlx,
+			"assets/bonus/exit_close_anim_5.xpm", &w, &h);
+	if (!game->exit->img_exit_close_anim_5)
 		return (0);
 	game->exit->img_exit_open = mlx_xpm_file_to_image(game->mlx,
 			"assets/bonus/exit_open.xpm", &w, &h);
@@ -120,7 +136,11 @@ static void ft_init_images_null(t_game *game)
     }
     if (game->exit)
     {
-        game->exit->img_exit_close = NULL;
+        game->exit->img_exit_close_anim_1 = NULL;
+        game->exit->img_exit_close_anim_2 = NULL;
+        game->exit->img_exit_close_anim_3 = NULL;
+        game->exit->img_exit_close_anim_4 = NULL;
+        game->exit->img_exit_close_anim_5 = NULL;
         game->exit->img_exit_open = NULL;
         game->exit->frame_controll = 0;
         game->exit->frame_counter = 0;
@@ -143,7 +163,7 @@ int	ft_start_game(t_game *game, t_map *map)
 	game->collectible = malloc(sizeof(t_collectible));
 	if (!game->collectible)
 		return (0);
-	game->exit = malloc(sizeof(t_collectible));
+	game->exit = malloc(sizeof(t_exit));
 	if (!game->exit)
 		return (0);
 	ft_init_images_null(game);

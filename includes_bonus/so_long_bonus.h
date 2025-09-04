@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: wsilveir <wsilveir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 18:17:39 by wini              #+#    #+#             */
-/*   Updated: 2025/09/02 23:49:04 by wini             ###   ########.fr       */
+/*   Updated: 2025/09/03 22:06:59 by wsilveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@
 
 # ifndef TILE_SIZE
 #  define TILE_SIZE 48
+# endif
+
+# ifndef FRAME_RATE
+#  define FRAME_RATE 20000
 # endif
 
 # ifndef GAME_NAME
@@ -56,7 +60,11 @@ typedef struct s_collectible
 
 typedef struct s_exit
 {
-	void	*img_exit_close;
+	void	*img_exit_close_anim_1;
+	void	*img_exit_close_anim_2;
+	void	*img_exit_close_anim_3;
+	void	*img_exit_close_anim_4;
+	void	*img_exit_close_anim_5;
 	void	*img_exit_open;
 	int		frame_controll;
 	int		frame_counter;

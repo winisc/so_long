@@ -6,7 +6,7 @@
 #    By: wsilveir <wsilveir@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/07 19:14:29 by wini              #+#    #+#              #
-#    Updated: 2025/08/25 20:30:26 by wsilveir         ###   ########.fr        #
+#    Updated: 2025/09/03 21:47:44 by wsilveir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = so_long
 NAME_BONUS = so_long_bonus
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -g2 -O0 -fsanitize=leak
 
 SRC_DIR = src
 SRC_DIR_BONUS = src_bonus

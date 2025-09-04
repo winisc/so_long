@@ -16,7 +16,7 @@ int	ft_handle_animation(t_game *game)
 {
 	game->player->frame_counter++;
 
-	if (game->player->frame_counter >= 3000)
+	if (game->player->frame_counter >= FRAME_RATE)
 	{
 		if (game->player->frame_controll == 1)
 		{
@@ -49,6 +49,43 @@ int	ft_handle_animation(t_game *game)
 			game->player->frame_controll = 1;
 		}
 		game->player->frame_counter = 0;
+	}
+
+	game->exit->frame_counter++;
+
+	if (game->exit->frame_counter >= FRAME_RATE)
+	{
+		if (game->exit->frame_controll == 1)
+		{
+			ft_render_image_to_grid(game, game->exit->img_exit_close_anim_1,
+				game->map->exit_x, game->map->exit_y);
+			game->exit->frame_controll = 2;
+		}
+		else if (game->exit->frame_controll == 2)
+		{
+			ft_render_image_to_grid(game, game->exit->img_exit_close_anim_2,
+				game->map->exit_x, game->map->exit_y);
+			game->exit->frame_controll = 3;
+		}
+		else if (game->exit->frame_controll == 3)
+		{
+			ft_render_image_to_grid(game, game->exit->img_exit_close_anim_3,
+				game->map->exit_x, game->map->exit_y);
+			game->exit->frame_controll = 4;
+		}
+		else if (game->exit->frame_controll == 4)
+		{
+			ft_render_image_to_grid(game, game->exit->img_exit_close_anim_4,
+				game->map->exit_x, game->map->exit_y);
+			game->exit->frame_controll = 5;
+		}
+		else
+		{
+			ft_render_image_to_grid(game, game->exit->img_exit_close_anim_5,
+				game->map->exit_x, game->map->exit_y);
+			game->exit->frame_controll = 1;
+		}
+		game->exit->frame_counter = 0;
 	}
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_state_game_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: wsilveir <wsilveir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 15:40:14 by wini              #+#    #+#             */
-/*   Updated: 2025/09/02 23:21:27 by wini             ###   ########.fr       */
+/*   Updated: 2025/09/03 21:57:34 by wsilveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,16 @@ int	ft_close_game(t_game *game)
 		mlx_destroy_image(game->mlx, game->collectible->img_collectible_anim_1);
 	if (game->exit->img_exit_open)
 		mlx_destroy_image(game->mlx, game->exit->img_exit_open);
-	if (game->exit->img_exit_close)
-		mlx_destroy_image(game->mlx, game->exit->img_exit_close);
+	if (game->exit->img_exit_close_anim_1)
+		mlx_destroy_image(game->mlx, game->exit->img_exit_close_anim_1);
+	if (game->exit->img_exit_close_anim_2)
+		mlx_destroy_image(game->mlx, game->exit->img_exit_close_anim_2);
+	if (game->exit->img_exit_close_anim_3)
+		mlx_destroy_image(game->mlx, game->exit->img_exit_close_anim_3);
+	if (game->exit->img_exit_close_anim_4)
+		mlx_destroy_image(game->mlx, game->exit->img_exit_close_anim_4);
+	if (game->exit->img_exit_close_anim_5)
+		mlx_destroy_image(game->mlx, game->exit->img_exit_close_anim_5);
 	if (game->win)
 		mlx_destroy_window(game->mlx, game->win);
 	if (game->mlx)
@@ -67,46 +75,5 @@ int	ft_key_hook(int keycode, t_game *game)
 		ft_player_move(game, "down");
 	if (keycode == 119)
 		ft_player_move(game, "up");
-	return (0);
-}
-
-int	ft_handle_animation(t_game *game)
-{
-	game->player->frame_counter++;
-
-	if (game->player->frame_counter >= 3000)
-	{
-		if (game->player->frame_controll == 1)
-		{
-			ft_render_image_to_grid(game, game->player->img_player_anim_1,
-				game->map->player_x, game->map->player_y);
-			game->player->frame_controll = 2;
-		}
-		else if (game->player->frame_controll == 2)
-		{
-			ft_render_image_to_grid(game, game->player->img_player_anim_2,
-				game->map->player_x, game->map->player_y);
-			game->player->frame_controll = 3;
-		}
-		else if (game->player->frame_controll == 3)
-		{
-			ft_render_image_to_grid(game, game->player->img_player_anim_3,
-				game->map->player_x, game->map->player_y);
-			game->player->frame_controll = 4;
-		}
-		else if (game->player->frame_controll == 4)
-		{
-			ft_render_image_to_grid(game, game->player->img_player_anim_4,
-				game->map->player_x, game->map->player_y);
-			game->player->frame_controll = 5;
-		}
-		else
-		{
-			ft_render_image_to_grid(game, game->player->img_player_anim_5,
-				game->map->player_x, game->map->player_y);
-			game->player->frame_controll = 1;
-		}
-		game->player->frame_counter = 0;
-	}
 	return (0);
 }
