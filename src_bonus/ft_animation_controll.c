@@ -20,11 +20,9 @@ void	ft_handle_player_animation(t_game *game)
 		ft_render_image_to_grid(game,
 			game->player->frames[game->player->frame_controll],
 			game->map->player_x, game->map->player_y);
-
 		game->player->frame_controll++;
 		if (game->player->frame_controll > 4)
 			game->player->frame_controll = 0;
-
 		game->player->frame_counter = 0;
 	}
 }
@@ -33,18 +31,15 @@ void	ft_handle_exit_animation(t_game *game)
 {
 	if (game->exit->open == 0)
 		return ;
-
 	game->exit->frame_counter++;
 	if (game->exit->frame_counter >= FRAME_RATE)
 	{
 		ft_render_image_to_grid(game,
 			game->exit->frames_open[game->exit->frame_controll],
 			game->map->exit_x, game->map->exit_y);
-
 		game->exit->frame_controll++;
 		if (game->exit->frame_controll > 4)
 			game->exit->frame_controll = 0;
-
 		game->exit->frame_counter = 0;
 	}
 }

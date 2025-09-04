@@ -6,7 +6,7 @@
 /*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 01:25:36 by wini              #+#    #+#             */
-/*   Updated: 2025/09/04 02:19:21 by wini             ###   ########.fr       */
+/*   Updated: 2025/09/04 02:47:41 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	ft_load_assets_player(t_game *game, int w, int h)
 	paths[2] = "assets/bonus/player/player_anim_3.xpm";
 	paths[3] = "assets/bonus/player/player_anim_4.xpm";
 	paths[4] = "assets/bonus/player/player_anim_5.xpm";
-
 	i = 0;
 	while (i < 5)
 	{
@@ -45,7 +44,6 @@ int	ft_load_assets_exit_open(t_game *game, int w, int h)
 	paths[2] = "assets/bonus/exit_open/exit_open_anim_3.xpm";
 	paths[3] = "assets/bonus/exit_open/exit_open_anim_4.xpm";
 	paths[4] = "assets/bonus/exit_open/exit_open_anim_5.xpm";
-
 	i = 0;
 	while (i < 5)
 	{
@@ -57,7 +55,6 @@ int	ft_load_assets_exit_open(t_game *game, int w, int h)
 	}
 	return (1);
 }
-
 
 int	ft_load_assets(t_game *game, int w, int h)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_so_long_utils_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wsilveir <wsilveir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 11:40:05 by wsilveir          #+#    #+#             */
-/*   Updated: 2025/08/25 20:28:03 by wsilveir         ###   ########.fr       */
+/*   Updated: 2025/09/04 02:48:27 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,9 @@ int	ft_validate_components(char *current_row)
 		return (0);
 	while (*current_row)
 	{
-		if (*current_row != 'C' && *current_row != '1' && *current_row != '0'
-			&& *current_row != 'E' && *current_row != 'P' && *current_row != 'T')
+		if (*current_row != 'C' && *current_row != '1'
+			&& *current_row != '0' && *current_row != 'E'
+			&& *current_row != 'P' && *current_row != 'T')
 			return (0);
 		current_row++;
 	}

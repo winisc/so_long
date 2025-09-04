@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_path_map_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wsilveir <wsilveir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 20:27:06 by wsilveir          #+#    #+#             */
-/*   Updated: 2025/08/25 20:27:36 by wsilveir         ###   ########.fr       */
+/*   Updated: 2025/09/04 02:47:22 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ void	ft_fill_path(char **grid, t_map *map, size_t player_x, size_t player_y)
 {
 	if (player_y >= (map->height - 1) || player_x >= (map->width - 1))
 		return ;
-	if (grid[player_y][player_x] == '1' || grid[player_y][player_x] == 'F' || grid[player_y][player_x] == 'T')
+	if (grid[player_y][player_x] == '1' || grid[player_y][player_x] == 'F'
+			|| grid[player_y][player_x] == 'T')
 		return ;
 	if (grid[player_y][player_x] == 'E')
 	{

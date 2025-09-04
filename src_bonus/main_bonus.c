@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wsilveir <wsilveir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 16:44:14 by wini              #+#    #+#             */
-/*   Updated: 2025/09/03 19:49:03 by wsilveir         ###   ########.fr       */
+/*   Updated: 2025/09/04 02:47:07 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,5 @@ int	main(int argc, char **argv)
 	game = ft_load_game(map);
 	if (!game)
 		return (1);
-	//ft_free_load_map(map);
 	return (0);
 }
