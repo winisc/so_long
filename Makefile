@@ -6,7 +6,7 @@
 #    By: wini <wini@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/07 19:14:29 by wini              #+#    #+#              #
-#    Updated: 2025/09/04 02:34:08 by wini             ###   ########.fr        #
+#    Updated: 2025/09/04 02:50:42 by wini             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,11 +43,11 @@ SRC_BONUS = $(SRC_DIR_BONUS)/main_bonus.c \
 	$(SRC_DIR_BONUS)/ft_load_game_bonus.c \
 	$(SRC_DIR_BONUS)/ft_state_game_bonus.c \
 	$(SRC_DIR_BONUS)/ft_player_controll_bonus.c \
-	$(SRC_DIR_BONUS)/ft_animation_controll.c \
-	$(SRC_DIR_BONUS)/ft_enemy_controll.c \
-	$(SRC_DIR_BONUS)/ft_init_entitys.c \
-	$(SRC_DIR_BONUS)/ft_load_assets.c \
-	$(SRC_DIR_BONUS)/ft_close_game.c \
+	$(SRC_DIR_BONUS)/ft_animation_controll_bonus.c \
+	$(SRC_DIR_BONUS)/ft_enemy_controll_bonus.c \
+	$(SRC_DIR_BONUS)/ft_init_entitys_bonus.c \
+	$(SRC_DIR_BONUS)/ft_load_assets_bonus.c \
+	$(SRC_DIR_BONUS)/ft_close_game_bonus.c \
 
 OBJS = $(SRC:.c=.o)
 OBJS_BONUS = $(SRC_BONUS:.c=.o)
