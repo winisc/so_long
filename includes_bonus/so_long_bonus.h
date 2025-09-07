@@ -6,7 +6,7 @@
 /*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 18:17:39 by wini              #+#    #+#             */
-/*   Updated: 2025/09/07 02:51:04 by wini             ###   ########.fr       */
+/*   Updated: 2025/09/07 03:07:22 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 # endif
 
 # ifndef GAME_NAME
-#  define GAME_NAME "test so_long_bonus"
+#  define GAME_NAME "NAO ENTRE EM PANICO"
 # endif
 
 typedef struct s_map
@@ -68,7 +68,7 @@ typedef struct s_collectible
 
 typedef struct s_exit
 {
-	void	*frames_open[5];
+	void	*frames_open[3];
 	void	*img_exit_close;
 	int		frame_controll;
 	int		frame_counter;

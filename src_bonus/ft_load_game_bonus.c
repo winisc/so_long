@@ -6,7 +6,7 @@
 /*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 01:39:33 by wini              #+#    #+#             */
-/*   Updated: 2025/09/07 02:51:04 by wini             ###   ########.fr       */
+/*   Updated: 2025/09/07 03:43:13 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,24 @@
 void	ft_render_image_to_grid(t_game *game, void *assets, size_t x, size_t y)
 {
 	mlx_put_image_to_window(game->mlx, game->win,
-		assets, x * TILE_SIZE, y * TILE_SIZE);
+		assets, x * TILE_SIZE, (y + 1) * TILE_SIZE);
+}
+
+void	ft_render_menu_hud(t_game *game)
+{
+	size_t	x;
+
+	x = 0;
+	while (x < game->map->width)
+	{
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->img_floor, x * TILE_SIZE, 0);
+		x++;
+	}
+	mlx_string_put(game->mlx, game->win, 12, 24, 0x000000, "Moves:");
+	mlx_string_put(game->mlx, game->win, 12, 44, 0x000000, "Vacas:");
+	mlx_string_put(game->mlx, game->win, 70, 24, 0x000000, "0");
+	mlx_string_put(game->mlx, game->win, 70, 44, 0x000000, "0");
 }
 
 void	ft_render_map(t_game *game, char **grid)
@@ -55,7 +72,7 @@ int	ft_start_entity_game(t_game *game, t_map *map)
 	game->collectible_now = 0;
 	game->mlx = mlx_init();
 	game->win = mlx_new_window(game->mlx, map->width * TILE_SIZE,
-			map->height * TILE_SIZE, GAME_NAME);
+			(map->height + 1) * TILE_SIZE, GAME_NAME);
 	game->player = malloc(sizeof(t_player));
 	if (!game->player)
 		return (0);
@@ -87,6 +104,7 @@ int	ft_load_game(t_map *map)
 		return (ft_close_game(&game));
 	}
 	ft_save_enemy_positions(&game);
+	ft_render_menu_hud(&game);
 	ft_render_map(&game, map->grid);
 	mlx_key_hook(game.win, ft_key_hook, &game);
 	mlx_hook(game.win, 17, 0, ft_close_game, &game);

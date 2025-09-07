@@ -6,17 +6,24 @@
 /*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 18:18:36 by wini              #+#    #+#             */
-/*   Updated: 2025/09/07 02:39:46 by wini             ###   ########.fr       */
+/*   Updated: 2025/09/07 03:43:04 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-void	ft_print_moves(int moves)
+void	ft_print_infos(t_game *game)
 {
-	ft_putstr_fd("Moves: ", 1);
-	ft_putnbr_fd(moves, 1);
-	ft_putendl_fd("", 1);
+	char	*moves_now;
+	char	*collectibles_now;
+
+	moves_now = ft_itoa(game->player->moves_now);
+	collectibles_now = ft_itoa(game->collectible_now);
+	ft_render_image_to_grid(game, game->img_floor, 1, -1);
+	mlx_string_put(game->mlx, game->win, 70, 24, 0x000000, moves_now);
+	mlx_string_put(game->mlx, game->win, 70, 44, 0x000000, collectibles_now);
+	free(moves_now);
+	free(collectibles_now);
 }
 
 void	ft_render_move(t_game *game, size_t move_x, size_t move_y)
@@ -63,7 +70,7 @@ void	ft_attempt_to_move(size_t move_x, size_t move_y, t_game *game)
 	}
 	ft_render_move(game, move_x, move_y);
 	game->player->moves_now++;
-	ft_print_moves(game->player->moves_now);
+	ft_print_infos(game);
 	return ;
 }
 

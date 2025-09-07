@@ -32,13 +32,13 @@ void	ft_handle_exit_animation(t_game *game)
 	if (game->exit->open == 0)
 		return ;
 	game->exit->frame_counter++;
-	if (game->exit->frame_counter >= FRAME_RATE_ANIMATIONS)
+	if (game->exit->frame_counter >= 6000)
 	{
 		ft_render_image_to_grid(game,
 			game->exit->frames_open[game->exit->frame_controll],
 			game->map->exit_x, game->map->exit_y);
 		game->exit->frame_controll++;
-		if (game->exit->frame_controll > 4)
+		if (game->exit->frame_controll > 2)
 			game->exit->frame_controll = 0;
 		game->exit->frame_counter = 0;
 	}
