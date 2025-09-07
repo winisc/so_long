@@ -6,7 +6,7 @@
 /*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 18:17:39 by wini              #+#    #+#             */
-/*   Updated: 2025/09/04 02:31:13 by wini             ###   ########.fr       */
+/*   Updated: 2025/09/06 22:16:57 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,12 @@
 #  define TILE_SIZE 48
 # endif
 
-# ifndef FRAME_RATE
-#  define FRAME_RATE 5000
+# ifndef FRAME_RATE_ANIMATIONS
+#  define FRAME_RATE_ANIMATIONS 5000
+# endif
+
+# ifndef FRAME_RATE_EVENTS
+#  define FRAME_RATE_EVENTS 40000
 # endif
 
 # ifndef GAME_NAME
@@ -52,6 +56,7 @@ typedef struct s_enemy
 	int		frame_counter;
 	int		*enemy_x;
 	int		*enemy_y;
+	int		*reset_move;
 }	t_enemy;
 
 typedef struct s_collectible

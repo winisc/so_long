@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init_entitys.c                                  :+:      :+:    :+:   */
+/*   ft_init_entitys_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 02:04:11 by wini              #+#    #+#             */
-/*   Updated: 2025/09/04 02:16:59 by wini             ###   ########.fr       */
+/*   Updated: 2025/09/06 22:18:25 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	ft_init_enemy(t_game *game)
 	game->enemy->img_enemy_anim_1 = NULL;
 	game->enemy->frame_controll = 0;
 	game->enemy->frame_counter = 0;
+	game->enemy->reset_move = NULL;
 	game->enemy->enemy_x = NULL;
 	game->enemy->enemy_y = NULL;
 }

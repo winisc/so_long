@@ -15,7 +15,7 @@
 void	ft_handle_player_animation(t_game *game)
 {
 	game->player->frame_counter++;
-	if (game->player->frame_counter >= FRAME_RATE)
+	if (game->player->frame_counter >= FRAME_RATE_ANIMATIONS)
 	{
 		ft_render_image_to_grid(game,
 			game->player->frames[game->player->frame_controll],
@@ -32,7 +32,7 @@ void	ft_handle_exit_animation(t_game *game)
 	if (game->exit->open == 0)
 		return ;
 	game->exit->frame_counter++;
-	if (game->exit->frame_counter >= FRAME_RATE)
+	if (game->exit->frame_counter >= FRAME_RATE_ANIMATIONS)
 	{
 		ft_render_image_to_grid(game,
 			game->exit->frames_open[game->exit->frame_controll],

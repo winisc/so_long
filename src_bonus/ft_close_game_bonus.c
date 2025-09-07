@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_close_game.c                                    :+:      :+:    :+:   */
+/*   ft_close_game_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 02:25:54 by wini              #+#    #+#             */
-/*   Updated: 2025/09/04 02:46:00 by wini             ###   ########.fr       */
+/*   Updated: 2025/09/06 22:17:56 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,12 @@ static void	ft_destroy_enemy(t_game *game)
 {
 	if (!game->enemy)
 		return ;
+	if (game->enemy->reset_move)
+		free(game->enemy->reset_move);
+	if (game->enemy->enemy_x)
+		free(game->enemy->enemy_x);
+	if (game->enemy->enemy_y)
+		free(game->enemy->enemy_y);
 	if (game->enemy->img_enemy_anim_1)
 		mlx_destroy_image(game->mlx, game->enemy->img_enemy_anim_1);
 	free(game->enemy);

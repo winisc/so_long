@@ -6,7 +6,7 @@
 /*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 15:40:14 by wini              #+#    #+#             */
-/*   Updated: 2025/09/04 02:28:51 by wini             ###   ########.fr       */
+/*   Updated: 2025/09/06 20:29:39 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int ft_controll_state_game(t_game *game)
 {
 	ft_handle_animation(game);
 	game->frame_counter++;
-	if (game->frame_counter >= FRAME_RATE)
+	if (game->frame_counter >= FRAME_RATE_EVENTS)
 	{
 		ft_move_enemy_controll(game);
 		game->frame_counter = 0;
