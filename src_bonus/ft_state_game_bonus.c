@@ -6,7 +6,7 @@
 /*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 15:40:14 by wini              #+#    #+#             */
-/*   Updated: 2025/09/06 20:29:39 by wini             ###   ########.fr       */
+/*   Updated: 2025/09/07 02:52:16 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_key_hook(int keycode, t_game *game)
 	return (0);
 }
 
-int ft_controll_state_game(t_game *game)
+int	ft_controll_state_game(t_game *game)
 {
 	ft_handle_animation(game);
 	game->frame_counter++;

@@ -6,7 +6,7 @@
 /*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 18:17:39 by wini              #+#    #+#             */
-/*   Updated: 2025/09/06 22:16:57 by wini             ###   ########.fr       */
+/*   Updated: 2025/09/07 02:51:04 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ typedef struct s_map
 
 typedef struct s_enemy
 {
-	void	*img_enemy_anim_1;
+	void	*img_enemy_1;
 	int		frame_controll;
 	int		frame_counter;
 	int		*enemy_x;
@@ -61,7 +61,7 @@ typedef struct s_enemy
 
 typedef struct s_collectible
 {
-	void	*img_collectible_anim_1;
+	void	*img_collectible_1;
 	int		frame_controll;
 	int		frame_counter;
 }	t_collectible;

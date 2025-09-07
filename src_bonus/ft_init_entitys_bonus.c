@@ -6,7 +6,7 @@
 /*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 02:04:11 by wini              #+#    #+#             */
-/*   Updated: 2025/09/06 22:18:25 by wini             ###   ########.fr       */
+/*   Updated: 2025/09/07 02:51:04 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_init_collectible(t_game *game)
 {
 	if (!game->collectible)
 		return ;
-	game->collectible->img_collectible_anim_1 = NULL;
+	game->collectible->img_collectible_1 = NULL;
 	game->collectible->frame_controll = 0;
 	game->collectible->frame_counter = 0;
 }
@@ -42,7 +42,7 @@ void	ft_init_enemy(t_game *game)
 {
 	if (!game->enemy)
 		return ;
-	game->enemy->img_enemy_anim_1 = NULL;
+	game->enemy->img_enemy_1 = NULL;
 	game->enemy->frame_controll = 0;
 	game->enemy->frame_counter = 0;
 	game->enemy->reset_move = NULL;

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_load_assets.c                                   :+:      :+:    :+:   */
+/*   ft_load_assets_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 01:25:36 by wini              #+#    #+#             */
-/*   Updated: 2025/09/04 02:47:41 by wini             ###   ########.fr       */
+/*   Updated: 2025/09/07 02:51:04 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,13 @@ int	ft_load_assets(t_game *game, int w, int h)
 			"assets/bonus/exit_close/exit_close.xpm", &w, &h);
 	if (!game->exit->img_exit_close)
 		return (0);
-	game->enemy->img_enemy_anim_1 = mlx_xpm_file_to_image(game->mlx,
+	game->enemy->img_enemy_1 = mlx_xpm_file_to_image(game->mlx,
 			"assets/bonus/enemy/enemy.xpm", &w, &h);
-	if (!game->enemy->img_enemy_anim_1)
+	if (!game->enemy->img_enemy_1)
 		return (0);
-	game->collectible->img_collectible_anim_1 = mlx_xpm_file_to_image(game->mlx,
+	game->collectible->img_collectible_1 = mlx_xpm_file_to_image(game->mlx,
 			"assets/bonus/collectible.xpm", &w, &h);
-	if (!game->collectible->img_collectible_anim_1)
+	if (!game->collectible->img_collectible_1)
 		return (0);
 	if (!ft_load_assets_player(game, w, h))
 		return (0);

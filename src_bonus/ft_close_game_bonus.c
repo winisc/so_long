@@ -6,7 +6,7 @@
 /*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 02:25:54 by wini              #+#    #+#             */
-/*   Updated: 2025/09/06 22:17:56 by wini             ###   ########.fr       */
+/*   Updated: 2025/09/07 02:51:04 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ static void	ft_destroy_collectible(t_game *game)
 {
 	if (!game->collectible)
 		return ;
-	if (game->collectible->img_collectible_anim_1)
-		mlx_destroy_image(game->mlx, game->collectible->img_collectible_anim_1);
+	if (game->collectible->img_collectible_1)
+		mlx_destroy_image(game->mlx, game->collectible->img_collectible_1);
 	free(game->collectible);
 }
 
@@ -47,8 +47,8 @@ static void	ft_destroy_enemy(t_game *game)
 		free(game->enemy->enemy_x);
 	if (game->enemy->enemy_y)
 		free(game->enemy->enemy_y);
-	if (game->enemy->img_enemy_anim_1)
-		mlx_destroy_image(game->mlx, game->enemy->img_enemy_anim_1);
+	if (game->enemy->img_enemy_1)
+		mlx_destroy_image(game->mlx, game->enemy->img_enemy_1);
 	free(game->enemy);
 }
 

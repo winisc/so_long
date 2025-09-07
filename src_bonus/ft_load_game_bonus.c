@@ -6,7 +6,7 @@
 /*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 01:39:33 by wini              #+#    #+#             */
-/*   Updated: 2025/09/04 02:21:16 by wini             ###   ########.fr       */
+/*   Updated: 2025/09/07 02:51:04 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,11 @@ void	ft_render_map(t_game *game, char **grid)
 				ft_render_image_to_grid(game, game->player->frames[0], x, y);
 			else if (grid[y][x] == 'C')
 				ft_render_image_to_grid(game,
-					game->collectible->img_collectible_anim_1, x, y);
+					game->collectible->img_collectible_1, x, y);
 			else if (grid[y][x] == 'E')
 				ft_render_image_to_grid(game, game->exit->img_exit_close, x, y);
 			else if (grid[y][x] == 'T')
-				ft_render_image_to_grid(game, game->enemy->img_enemy_anim_1, x, y);
+				ft_render_image_to_grid(game, game->enemy->img_enemy_1, x, y);
 			x++;
 		}
 		y++;
