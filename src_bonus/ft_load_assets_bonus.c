@@ -6,7 +6,7 @@
 /*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 01:25:36 by wini              #+#    #+#             */
-/*   Updated: 2025/09/07 03:00:40 by wini             ###   ########.fr       */
+/*   Updated: 2025/09/08 22:24:08 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,15 @@
 
 int	ft_load_assets_player(t_game *game, int w, int h)
 {
-	char	*paths[5];
+	char	*paths[4];
 	int		i;
 
 	paths[0] = "assets/bonus/player/player_anim_1.xpm";
 	paths[1] = "assets/bonus/player/player_anim_2.xpm";
 	paths[2] = "assets/bonus/player/player_anim_3.xpm";
 	paths[3] = "assets/bonus/player/player_anim_4.xpm";
-	paths[4] = "assets/bonus/player/player_anim_5.xpm";
 	i = 0;
-	while (i < 5)
+	while (i < 4)
 	{
 		game->player->frames[i] = mlx_xpm_file_to_image(game->mlx,
 				paths[i], &w, &h);
@@ -42,8 +41,9 @@ int	ft_load_assets_exit_open(t_game *game, int w, int h)
 	paths[0] = "assets/bonus/exit_open/exit_open_anim_1.xpm";
 	paths[1] = "assets/bonus/exit_open/exit_open_anim_2.xpm";
 	paths[2] = "assets/bonus/exit_open/exit_open_anim_3.xpm";
+	paths[3] = "assets/bonus/exit_open/exit_open_anim_4.xpm";
 	i = 0;
-	while (i < 3)
+	while (i < 4)
 	{
 		game->exit->frames_open[i] = mlx_xpm_file_to_image(game->mlx,
 				paths[i], &w, &h);

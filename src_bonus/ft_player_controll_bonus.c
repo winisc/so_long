@@ -6,7 +6,7 @@
 /*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 18:18:36 by wini              #+#    #+#             */
-/*   Updated: 2025/09/07 03:43:04 by wini             ###   ########.fr       */
+/*   Updated: 2025/09/07 14:41:51 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	ft_print_infos(t_game *game)
 	moves_now = ft_itoa(game->player->moves_now);
 	collectibles_now = ft_itoa(game->collectible_now);
 	ft_render_image_to_grid(game, game->img_floor, 1, -1);
-	mlx_string_put(game->mlx, game->win, 70, 24, 0x000000, moves_now);
-	mlx_string_put(game->mlx, game->win, 70, 44, 0x000000, collectibles_now);
+	mlx_string_put(game->mlx, game->win, 74, 24, 0x000000, moves_now);
+	mlx_string_put(game->mlx, game->win, 74, 44, 0x000000, collectibles_now);
 	free(moves_now);
 	free(collectibles_now);
 }

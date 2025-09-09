@@ -6,7 +6,7 @@
 /*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 02:25:54 by wini              #+#    #+#             */
-/*   Updated: 2025/09/07 03:00:57 by wini             ###   ########.fr       */
+/*   Updated: 2025/09/08 22:24:49 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	ft_destroy_player(t_game *game)
 	if (!game->player)
 		return ;
 	i = 0;
-	while (i < 5)
+	while (i < 4)
 	{
 		if (game->player->frames[i])
 			mlx_destroy_image(game->mlx, game->player->frames[i]);
@@ -61,7 +61,7 @@ static void	ft_destroy_exit(t_game *game)
 	if (game->exit->img_exit_close)
 		mlx_destroy_image(game->mlx, game->exit->img_exit_close);
 	i = 0;
-	while (i < 3)
+	while (i < 4)
 	{
 		if (game->exit->frames_open[i])
 			mlx_destroy_image(game->mlx, game->exit->frames_open[i]);

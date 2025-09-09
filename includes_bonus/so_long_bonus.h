@@ -6,7 +6,7 @@
 /*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 18:17:39 by wini              #+#    #+#             */
-/*   Updated: 2025/09/07 03:07:22 by wini             ###   ########.fr       */
+/*   Updated: 2025/09/08 22:27:06 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # endif
 
 # ifndef FRAME_RATE_ANIMATIONS
-#  define FRAME_RATE_ANIMATIONS 5000
+#  define FRAME_RATE_ANIMATIONS 6000
 # endif
 
 # ifndef FRAME_RATE_EVENTS
@@ -68,7 +68,7 @@ typedef struct s_collectible
 
 typedef struct s_exit
 {
-	void	*frames_open[3];
+	void	*frames_open[4];
 	void	*img_exit_close;
 	int		frame_controll;
 	int		frame_counter;
@@ -77,7 +77,7 @@ typedef struct s_exit
 
 typedef struct s_player
 {
-	void	*frames[5];
+	void	*frames[4];
 	int		frame_controll;
 	int		frame_counter;
 	int		moves_now;

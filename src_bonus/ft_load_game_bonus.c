@@ -6,7 +6,7 @@
 /*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 01:39:33 by wini              #+#    #+#             */
-/*   Updated: 2025/09/07 03:43:13 by wini             ###   ########.fr       */
+/*   Updated: 2025/09/07 14:42:44 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ void	ft_render_menu_hud(t_game *game)
 			game->img_floor, x * TILE_SIZE, 0);
 		x++;
 	}
-	mlx_string_put(game->mlx, game->win, 12, 24, 0x000000, "Moves:");
-	mlx_string_put(game->mlx, game->win, 12, 44, 0x000000, "Vacas:");
-	mlx_string_put(game->mlx, game->win, 70, 24, 0x000000, "0");
-	mlx_string_put(game->mlx, game->win, 70, 44, 0x000000, "0");
+	mlx_string_put(game->mlx, game->win, 8, 24, 0x000000, "Moves:");
+	mlx_string_put(game->mlx, game->win, 8, 44, 0x000000, "Cadets:");
+	mlx_string_put(game->mlx, game->win, 74, 24, 0x000000, "0");
+	mlx_string_put(game->mlx, game->win, 74, 44, 0x000000, "0");
 }
 
 void	ft_render_map(t_game *game, char **grid)
