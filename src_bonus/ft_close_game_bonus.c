@@ -6,7 +6,7 @@
 /*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 02:25:54 by wini              #+#    #+#             */
-/*   Updated: 2025/09/08 22:24:49 by wini             ###   ########.fr       */
+/*   Updated: 2025/09/09 01:39:13 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,23 @@ static void	ft_destroy_player(t_game *game)
 
 static void	ft_destroy_collectible(t_game *game)
 {
+	int	i;
+
 	if (!game->collectible)
 		return ;
-	if (game->collectible->img_collectible_1)
-		mlx_destroy_image(game->mlx, game->collectible->img_collectible_1);
+	i = 0;
+	while (i < 4)
+	{
+		if (game->collectible->frames[i])
+			mlx_destroy_image(game->mlx, game->collectible->frames[i]);
+		i++;
+	}
+	if (game->collectible->active)
+		free(game->collectible->active);
+	if (game->collectible->collectible_x)
+		free(game->collectible->collectible_x);
+	if (game->collectible->collectible_y)
+		free(game->collectible->collectible_y);
 	free(game->collectible);
 }
 
@@ -47,8 +60,10 @@ static void	ft_destroy_enemy(t_game *game)
 		free(game->enemy->enemy_x);
 	if (game->enemy->enemy_y)
 		free(game->enemy->enemy_y);
-	if (game->enemy->img_enemy_1)
-		mlx_destroy_image(game->mlx, game->enemy->img_enemy_1);
+	if (game->enemy->frame_up)
+		mlx_destroy_image(game->mlx, game->enemy->frame_up);
+	if (game->enemy->frame_down)
+		mlx_destroy_image(game->mlx, game->enemy->frame_down);
 	free(game->enemy);
 }
 
@@ -58,13 +73,13 @@ static void	ft_destroy_exit(t_game *game)
 
 	if (!game->exit)
 		return ;
-	if (game->exit->img_exit_close)
-		mlx_destroy_image(game->mlx, game->exit->img_exit_close);
 	i = 0;
 	while (i < 4)
 	{
-		if (game->exit->frames_open[i])
-			mlx_destroy_image(game->mlx, game->exit->frames_open[i]);
+		if (game->exit->frame_open[i])
+			mlx_destroy_image(game->mlx, game->exit->frame_open[i]);
+		if (game->exit->frame_close[i])
+			mlx_destroy_image(game->mlx, game->exit->frame_close[i]);
 		i++;
 	}
 	free(game->exit);

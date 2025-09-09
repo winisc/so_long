@@ -6,7 +6,7 @@
 /*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 01:39:33 by wini              #+#    #+#             */
-/*   Updated: 2025/09/07 14:42:44 by wini             ###   ########.fr       */
+/*   Updated: 2025/09/09 01:22:20 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ void	ft_render_menu_hud(t_game *game)
 			game->img_floor, x * TILE_SIZE, 0);
 		x++;
 	}
-	mlx_string_put(game->mlx, game->win, 8, 24, 0x000000, "Moves:");
-	mlx_string_put(game->mlx, game->win, 8, 44, 0x000000, "Cadets:");
-	mlx_string_put(game->mlx, game->win, 74, 24, 0x000000, "0");
-	mlx_string_put(game->mlx, game->win, 74, 44, 0x000000, "0");
+	mlx_string_put(game->mlx, game->win, 10, 21, 0x000000, "MOVES");
+	mlx_string_put(game->mlx, game->win, 22, 37, 0x000000, "0");
+	mlx_string_put(game->mlx, game->win, 55, 21, 0x000000, "CADETS");
+	mlx_string_put(game->mlx, game->win, 70, 37, 0x000000, "0");
 }
 
 void	ft_render_map(t_game *game, char **grid)
@@ -52,12 +52,12 @@ void	ft_render_map(t_game *game, char **grid)
 			else if (grid[y][x] == 'P')
 				ft_render_image_to_grid(game, game->player->frames[0], x, y);
 			else if (grid[y][x] == 'C')
-				ft_render_image_to_grid(game,
-					game->collectible->img_collectible_1, x, y);
+				ft_render_image_to_grid(game, game->collectible->frames[0],
+					x, y);
 			else if (grid[y][x] == 'E')
-				ft_render_image_to_grid(game, game->exit->img_exit_close, x, y);
+				ft_render_image_to_grid(game, game->exit->frame_close[0], x, y);
 			else if (grid[y][x] == 'T')
-				ft_render_image_to_grid(game, game->enemy->img_enemy_1, x, y);
+				ft_render_image_to_grid(game, game->enemy->frame_down, x, y);
 			x++;
 		}
 		y++;
@@ -104,6 +104,7 @@ int	ft_load_game(t_map *map)
 		return (ft_close_game(&game));
 	}
 	ft_save_enemy_positions(&game);
+	ft_save_collectible_positions(&game);
 	ft_render_menu_hud(&game);
 	ft_render_map(&game, map->grid);
 	mlx_key_hook(game.win, ft_key_hook, &game);

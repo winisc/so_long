@@ -6,7 +6,7 @@
 #    By: wini <wini@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/07 19:14:29 by wini              #+#    #+#              #
-#    Updated: 2025/09/04 02:50:42 by wini             ###   ########.fr        #
+#    Updated: 2025/09/09 02:04:04 by wini             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,7 @@ SRC_BONUS = $(SRC_DIR_BONUS)/main_bonus.c \
 	$(SRC_DIR_BONUS)/ft_state_game_bonus.c \
 	$(SRC_DIR_BONUS)/ft_player_controll_bonus.c \
 	$(SRC_DIR_BONUS)/ft_animation_controll_bonus.c \
+	$(SRC_DIR_BONUS)/ft_collectible_controll_bonus.c \
 	$(SRC_DIR_BONUS)/ft_enemy_controll_bonus.c \
 	$(SRC_DIR_BONUS)/ft_init_entitys_bonus.c \
 	$(SRC_DIR_BONUS)/ft_load_assets_bonus.c \
@@ -65,11 +66,9 @@ bonus: mlx libft $(NAME_BONUS)
 $(NAME_BONUS): $(OBJS_BONUS) $(LIBFT_A)
 	$(CC) $(CFLAGS) $(OBJS_BONUS) $(INCLUDES_BONUS) -L$(LIBFT_DIR) -lft $(MLX_LIBS) -o $(NAME_BONUS)
 
-# regra genérica para objs normais
 $(SRC_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
-# regra genérica para objs bonus
 $(SRC_DIR_BONUS)/%.o: $(SRC_DIR_BONUS)/%.c
 	$(CC) $(CFLAGS) $(INCLUDES_BONUS) -c $< -o $@
 

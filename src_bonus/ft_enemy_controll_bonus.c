@@ -16,9 +16,9 @@ static int	ft_init_enemy_arrays(t_game *game, size_t total_enemy)
 {
 	size_t	i;
 
-	game->enemy->enemy_x = malloc(total_enemy * sizeof(int));
-	game->enemy->enemy_y = malloc(total_enemy * sizeof(int));
-	game->enemy->reset_move = malloc(total_enemy * sizeof(int));
+	game->enemy->enemy_x = malloc(total_enemy * sizeof(size_t));
+	game->enemy->enemy_y = malloc(total_enemy * sizeof(size_t));
+	game->enemy->reset_move = malloc(total_enemy * sizeof(size_t));
 	if (!game->enemy->enemy_x || !game->enemy->enemy_y
 		|| !game->enemy->reset_move)
 		return (0);
@@ -59,16 +59,34 @@ int	ft_save_enemy_positions(t_game *game)
 	return (1);
 }
 
-void	ft_attempt_enemy_to_move(t_game *game, size_t enemy_move_y, size_t i)
+void	ft_render_sprite_direction(int direction, size_t enemt_id, t_game *game)
+{
+	if (direction == 1)
+	{
+		ft_render_image_to_grid(game, game->enemy->frame_down,
+			game->enemy->enemy_x[enemt_id], game->enemy->enemy_y[enemt_id]);
+	}
+	else
+	{
+		ft_render_image_to_grid(game, game->enemy->frame_up,
+			game->enemy->enemy_x[enemt_id], game->enemy->enemy_y[enemt_id]);
+	}
+}
+
+void	ft_attempt_enemy_to_move(t_game *game, size_t enemy_move_y, size_t i,
+	int direction)
 {
 	char	**grid;
 
 	grid = game->map->grid;
+	ft_render_sprite_direction(direction, i, game);
 	if (grid[enemy_move_y][game->enemy->enemy_x[i]] == '1')
 		return ;
 	if (grid[enemy_move_y][game->enemy->enemy_x[i]] == 'T')
 		return ;
 	if (grid[enemy_move_y][game->enemy->enemy_x[i]] == 'E')
+		return ;
+	if (grid[enemy_move_y][game->enemy->enemy_x[i]] == 'C')
 		return ;
 	grid[game->enemy->enemy_y[i]][game->enemy->enemy_x[i]] = '0';
 	ft_render_image_to_grid(game, game->img_floor, game->enemy->enemy_x[i],
@@ -77,8 +95,7 @@ void	ft_attempt_enemy_to_move(t_game *game, size_t enemy_move_y, size_t i)
 	if (grid[game->enemy->enemy_y[i]][game->enemy->enemy_x[i]] == 'P')
 		ft_close_game(game);
 	grid[game->enemy->enemy_y[i]][game->enemy->enemy_x[i]] = 'T';
-	ft_render_image_to_grid(game, game->enemy->img_enemy_1,
-		game->enemy->enemy_x[i], game->enemy->enemy_y[i]);
+	ft_render_sprite_direction(direction, i, game);
 }
 
 void	ft_move_enemy_controll(t_game *game)
@@ -93,12 +110,12 @@ void	ft_move_enemy_controll(t_game *game)
 		if (game->enemy->reset_move[i] == 0 || game->enemy->reset_move[i] == 3)
 		{
 			enemy_move_y = game->enemy->enemy_y[i] - 1;
-			ft_attempt_enemy_to_move(game, enemy_move_y, i);
+			ft_attempt_enemy_to_move(game, enemy_move_y, i, -1);
 		}
 		if (game->enemy->reset_move[i] == 1 || game->enemy->reset_move[i] == 2)
 		{
 			enemy_move_y = game->enemy->enemy_y[i] + 1;
-			ft_attempt_enemy_to_move(game, enemy_move_y, i);
+			ft_attempt_enemy_to_move(game, enemy_move_y, i, 1);
 		}
 		game->enemy->reset_move[i]++;
 		if (game->enemy->reset_move[i] > 3)

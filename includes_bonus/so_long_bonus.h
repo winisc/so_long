@@ -6,7 +6,7 @@
 /*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 18:17:39 by wini              #+#    #+#             */
-/*   Updated: 2025/09/08 22:27:06 by wini             ###   ########.fr       */
+/*   Updated: 2025/09/09 01:58:45 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@
 # endif
 
 # ifndef FRAME_RATE_ANIMATIONS
-#  define FRAME_RATE_ANIMATIONS 6000
+#  define FRAME_RATE_ANIMATIONS 10000
 # endif
 
 # ifndef FRAME_RATE_EVENTS
-#  define FRAME_RATE_EVENTS 40000
+#  define FRAME_RATE_EVENTS 30000
 # endif
 
 # ifndef GAME_NAME
@@ -51,25 +51,29 @@ typedef struct s_map
 
 typedef struct s_enemy
 {
-	void	*img_enemy_1;
+	void	*frame_down;
+	void	*frame_up;
 	int		frame_controll;
 	int		frame_counter;
-	int		*enemy_x;
-	int		*enemy_y;
+	size_t	*enemy_x;
+	size_t	*enemy_y;
 	int		*reset_move;
 }	t_enemy;
 
 typedef struct s_collectible
 {
-	void	*img_collectible_1;
+	void	*frames[4];
+	size_t	*collectible_x;
+	size_t	*collectible_y;
 	int		frame_controll;
 	int		frame_counter;
+	int		*active;
 }	t_collectible;
 
 typedef struct s_exit
 {
-	void	*frames_open[4];
-	void	*img_exit_close;
+	void	*frame_open[4];
+	void	*frame_close[4];
 	int		frame_controll;
 	int		frame_counter;
 	int		open;
@@ -120,13 +124,16 @@ int		ft_close_game(t_game *game);
 int		ft_key_hook(int keycode, t_game *game);
 int		ft_validate_components(char *current_row);
 
-void		ft_handle_animation(t_game *game);
+void	ft_handle_animation(t_game *game);
 void	ft_handle_player_animation(t_game *game);
 void	ft_handle_exit_animation(t_game *game);
 int		ft_load_assets(t_game *game, int w, int h);
 void	ft_init_entitys(t_game *game);
 int		ft_controll_state_game(t_game *game);
 int		ft_save_enemy_positions(t_game *game);
+int		ft_save_collectible_positions(t_game *game);
+int		ft_init_collectible_arrays(t_game *game, size_t total_collectible);
+void	ft_disable_collectible_now(t_game *game, size_t x, size_t y);
 void	ft_move_enemy_controll(t_game *game);
 
 #endif

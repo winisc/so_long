@@ -6,7 +6,7 @@
 /*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 02:04:11 by wini              #+#    #+#             */
-/*   Updated: 2025/09/07 02:51:04 by wini             ###   ########.fr       */
+/*   Updated: 2025/09/09 01:38:56 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,19 @@ void	ft_init_player(t_game *game)
 
 void	ft_init_collectible(t_game *game)
 {
+	int	i;
+
 	if (!game->collectible)
 		return ;
-	game->collectible->img_collectible_1 = NULL;
+	i = 0;
+	while (i < 5)
+	{
+		game->collectible->frames[i] = NULL;
+		i++;
+	}
+	game->collectible->active = NULL;
+	game->collectible->collectible_x = NULL;
+	game->collectible->collectible_y = NULL;
 	game->collectible->frame_controll = 0;
 	game->collectible->frame_counter = 0;
 }
@@ -42,7 +52,8 @@ void	ft_init_enemy(t_game *game)
 {
 	if (!game->enemy)
 		return ;
-	game->enemy->img_enemy_1 = NULL;
+	game->enemy->frame_down = NULL;
+	game->enemy->frame_up = NULL;
 	game->enemy->frame_controll = 0;
 	game->enemy->frame_counter = 0;
 	game->enemy->reset_move = NULL;
@@ -59,10 +70,10 @@ void	ft_init_exit(t_game *game)
 	i = 0;
 	while (i < 5)
 	{
-		game->exit->frames_open[i] = NULL;
+		game->exit->frame_open[i] = NULL;
+		game->exit->frame_close[i] = NULL;
 		i++;
 	}
-	game->exit->img_exit_close = NULL;
 	game->exit->frame_controll = 0;
 	game->exit->frame_counter = 0;
 	game->exit->open = 0;
