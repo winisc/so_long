@@ -93,7 +93,10 @@ void	ft_attempt_enemy_to_move(t_game *game, size_t enemy_move_y, size_t i,
 		game->enemy->enemy_y[i]);
 	game->enemy->enemy_y[i] = enemy_move_y;
 	if (grid[game->enemy->enemy_y[i]][game->enemy->enemy_x[i]] == 'P')
-		ft_close_game(game);
+	{
+		ft_render_game_over(game);
+		return ;
+	}
 	grid[game->enemy->enemy_y[i]][game->enemy->enemy_x[i]] = 'T';
 	ft_render_sprite_direction(direction, i, game);
 }
@@ -107,6 +110,8 @@ void	ft_move_enemy_controll(t_game *game)
 	enemy_move_y = 0;
 	while (i < game->map->count_enemys)
 	{
+		if (!game->state)
+			return ;
 		if (game->enemy->reset_move[i] == 0 || game->enemy->reset_move[i] == 3)
 		{
 			enemy_move_y = game->enemy->enemy_y[i] - 1;

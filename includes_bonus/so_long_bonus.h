@@ -6,7 +6,7 @@
 /*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 18:17:39 by wini              #+#    #+#             */
-/*   Updated: 2025/09/09 01:58:45 by wini             ###   ########.fr       */
+/*   Updated: 2025/09/13 20:34:46 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # endif
 
 # ifndef FRAME_RATE_EVENTS
-#  define FRAME_RATE_EVENTS 30000
+#  define FRAME_RATE_EVENTS 20000
 # endif
 
 # ifndef GAME_NAME
@@ -89,6 +89,7 @@ typedef struct s_player
 
 typedef struct s_game
 {
+	int				state;
 	void			*mlx;
 	void			*win;
 	void			*img_wall;
@@ -135,5 +136,8 @@ int		ft_save_collectible_positions(t_game *game);
 int		ft_init_collectible_arrays(t_game *game, size_t total_collectible);
 void	ft_disable_collectible_now(t_game *game, size_t x, size_t y);
 void	ft_move_enemy_controll(t_game *game);
+
+void	ft_render_game_over(t_game *game);
+void	ft_render_victory(t_game *game);
 
 #endif

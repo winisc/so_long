@@ -6,7 +6,7 @@
 /*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 18:18:36 by wini              #+#    #+#             */
-/*   Updated: 2025/09/09 01:47:36 by wini             ###   ########.fr       */
+/*   Updated: 2025/09/13 20:34:46 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,11 @@ void	ft_attempt_to_move(size_t move_x, size_t move_y, t_game *game)
 	else if (grid[move_y][move_x] == 'C')
 		ft_collected_claim(game, move_x, move_y);
 	else if (grid[move_y][move_x] == 'T')
-		ft_close_game(game);
+		return (ft_render_game_over(game));
 	else if (grid[move_y][move_x] == 'E')
 	{
 		if (game->collectible_now == game->map->count_collectibles)
-			ft_close_game(game);
+			return (ft_render_victory(game));
 		else
 			return ;
 	}

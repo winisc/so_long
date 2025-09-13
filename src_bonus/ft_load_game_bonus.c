@@ -6,7 +6,7 @@
 /*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 01:39:33 by wini              #+#    #+#             */
-/*   Updated: 2025/09/09 01:22:20 by wini             ###   ########.fr       */
+/*   Updated: 2025/09/13 19:38:06 by wini             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void	ft_render_map(t_game *game, char **grid)
 
 int	ft_start_entity_game(t_game *game, t_map *map)
 {
+	game->state = 1;
 	game->frame_controll = 0;
 	game->frame_counter = 0;
 	game->map = map;

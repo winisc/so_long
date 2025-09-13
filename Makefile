@@ -6,7 +6,7 @@
 #    By: wini <wini@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/07 19:14:29 by wini              #+#    #+#              #
-#    Updated: 2025/09/09 02:04:04 by wini             ###   ########.fr        #
+#    Updated: 2025/09/13 20:02:28 by wini             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,7 @@ SRC_BONUS = $(SRC_DIR_BONUS)/main_bonus.c \
 	$(SRC_DIR_BONUS)/ft_init_entitys_bonus.c \
 	$(SRC_DIR_BONUS)/ft_load_assets_bonus.c \
 	$(SRC_DIR_BONUS)/ft_close_game_bonus.c \
+	$(SRC_DIR_BONUS)/ft_end_game.c
 
 OBJS = $(SRC:.c=.o)
 OBJS_BONUS = $(SRC_BONUS:.c=.o)
