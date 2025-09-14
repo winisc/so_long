@@ -6,7 +6,7 @@
 #    By: wini <wini@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/07 19:14:29 by wini              #+#    #+#              #
-#    Updated: 2025/09/14 19:30:33 by wini             ###   ########.fr        #
+#    Updated: 2025/09/14 19:30:57 by wini             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ LIBFT_DIR = libs/libft
 INCLUDES = -Iincludes -Imlx -I$(LIBFT_DIR)
 INCLUDES_BONUS = -Iincludes_bonus -Imlx -I$(LIBFT_DIR)
 
-SRC = $(SRC_DIR)/main.c \
+SRC = $(SRC_DIR)/so_long.c \
 	$(SRC_DIR)/ft_check_map.c \
 	$(SRC_DIR)/ft_load_map.c \
 	$(SRC_DIR)/ft_so_long_utils.c \
