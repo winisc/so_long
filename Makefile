@@ -6,7 +6,7 @@
 #    By: wini <wini@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/07 19:14:29 by wini              #+#    #+#              #
-#    Updated: 2025/09/13 20:02:28 by wini             ###   ########.fr        #
+#    Updated: 2025/09/14 19:30:33 by wini             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ SRC = $(SRC_DIR)/main.c \
 	$(SRC_DIR)/ft_state_game.c \
 	$(SRC_DIR)/ft_player_controll.c
 
-SRC_BONUS = $(SRC_DIR_BONUS)/main_bonus.c \
+SRC_BONUS = $(SRC_DIR_BONUS)/so_long_bonus.c \
 	$(SRC_DIR_BONUS)/ft_check_map_bonus.c \
 	$(SRC_DIR_BONUS)/ft_load_map_bonus.c \
 	$(SRC_DIR_BONUS)/ft_so_long_utils_bonus.c \
