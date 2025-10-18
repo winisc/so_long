@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_load_game_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: wsilveir <wsilveir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 01:39:33 by wini              #+#    #+#             */
-/*   Updated: 2025/09/13 19:38:06 by wini             ###   ########.fr       */
+/*   Updated: 2025/10/17 21:44:04 by wsilveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_render_image_to_grid(t_game *game, void *assets, size_t x, size_t y)
 		assets, x * TILE_SIZE, (y + 1) * TILE_SIZE);
 }
 
-void	ft_render_menu_hud(t_game *game)
+void	ft_render_hud_menu(t_game *game)
 {
 	size_t	x;
 
@@ -29,6 +29,8 @@ void	ft_render_menu_hud(t_game *game)
 			game->img_floor, x * TILE_SIZE, 0);
 		x++;
 	}
+	mlx_set_font(game->mlx, game->win,
+		"-misc-fixed-bold-r-semicondensed--0-0-75-75-c-0-iso10646-1");
 	mlx_string_put(game->mlx, game->win, 10, 21, 0x000000, "MOVES");
 	mlx_string_put(game->mlx, game->win, 22, 37, 0x000000, "0");
 	mlx_string_put(game->mlx, game->win, 55, 21, 0x000000, "CADETS");
@@ -106,7 +108,7 @@ int	ft_load_game(t_map *map)
 	}
 	ft_save_enemy_positions(&game);
 	ft_save_collectible_positions(&game);
-	ft_render_menu_hud(&game);
+	ft_render_hud_menu(&game);
 	ft_render_map(&game, map->grid);
 	mlx_key_hook(game.win, ft_key_hook, &game);
 	mlx_hook(game.win, 17, 0, ft_close_game, &game);
