@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wini <wini@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: wsilveir <wsilveir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 18:17:39 by wini              #+#    #+#             */
-/*   Updated: 2025/09/13 20:34:46 by wini             ###   ########.fr       */
+/*   Updated: 2025/09/16 19:06:05 by wsilveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@
 # endif
 
 # ifndef FRAME_RATE_ANIMATIONS
-#  define FRAME_RATE_ANIMATIONS 10000
+#  define FRAME_RATE_ANIMATIONS 50000
 # endif
 
 # ifndef FRAME_RATE_EVENTS
-#  define FRAME_RATE_EVENTS 20000
+#  define FRAME_RATE_EVENTS 150000
 # endif
 
 # ifndef GAME_NAME

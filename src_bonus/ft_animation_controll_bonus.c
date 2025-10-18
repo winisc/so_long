@@ -58,7 +58,7 @@ void	ft_handle_player_animation(t_game *game)
 void	ft_handle_exit_animation(t_game *game)
 {
 	game->exit->frame_counter++;
-	if (game->exit->frame_counter >= 6000)
+	if (game->exit->frame_counter >= FRAME_RATE_ANIMATIONS)
 	{
 		if (game->exit->open == 0)
 		{
