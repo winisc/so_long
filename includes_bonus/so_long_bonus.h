@@ -105,39 +105,39 @@ typedef struct s_game
 
 }	t_game;
 
-t_map	*ft_load_map(char *map_file);
-t_map	*ft_parse_map(int fd);
-size_t	ft_width_len(char *row);
-void	*ft_free_map_file(int fd);
-void	*ft_free_load_map(t_map *map);
-void	ft_free_grid(char **grid);
-void	ft_start_map(t_map *map);
-void	*ft_handle_error(char *msg, t_map *map, int fd, char **grid);
-void	ft_add_count_components(char *current_row, t_map *map);
-void	ft_player_move(t_game *game, char *direction);
-void	ft_render_image_to_grid(t_game *game, void *assets, size_t x,
+t_map	*load_map(char *map_file);
+t_map	*parse_map(int fd);
+size_t	width_len(char *row);
+void	*free_map_file(int fd);
+void	*free_load_map(t_map *map);
+void	free_grid(char **grid);
+void	start_map(t_map *map);
+void	*handle_error(char *msg, t_map *map, int fd, char **grid);
+void	add_count_components(char *current_row, t_map *map);
+void	player_move(t_game *game, char *direction);
+void	render_image_to_grid(t_game *game, void *assets, size_t x,
 			size_t y);
 char	*ft_strdup_nl(const char *src);
-int		ft_check_path(t_map *map);
-int		ft_check_extension_fd(char *map_file);
-int		ft_load_game(t_map *map);
-int		ft_close_game(t_game *game);
-int		ft_key_hook(int keycode, t_game *game);
-int		ft_validate_components(char *current_row);
+int		check_path(t_map *map);
+int		check_extension_fd(char *map_file);
+int		load_game(t_map *map);
+int		close_game(t_game *game);
+int		key_hook(int keycode, t_game *game);
+int		validate_components(char *current_row);
 
-void	ft_handle_animation(t_game *game);
-void	ft_handle_player_animation(t_game *game);
-void	ft_handle_exit_animation(t_game *game);
-int		ft_load_assets(t_game *game, int w, int h);
-void	ft_init_entitys(t_game *game);
-int		ft_controll_state_game(t_game *game);
-int		ft_save_enemy_positions(t_game *game);
-int		ft_save_collectible_positions(t_game *game);
-int		ft_init_collectible_arrays(t_game *game, size_t total_collectible);
-void	ft_disable_collectible_now(t_game *game, size_t x, size_t y);
-void	ft_move_enemy_controll(t_game *game);
+void	handle_animation(t_game *game);
+void	handle_player_animation(t_game *game);
+void	handle_exit_animation(t_game *game);
+int		load_assets(t_game *game, int w, int h);
+void	init_entitys(t_game *game);
+int		controll_state_game(t_game *game);
+int		save_enemy_positions(t_game *game);
+int		save_collectible_positions(t_game *game);
+int		init_collectible_arrays(t_game *game, size_t total_collectible);
+void	disable_collectible_now(t_game *game, size_t x, size_t y);
+void	move_enemy_controll(t_game *game);
 
-void	ft_render_game_over(t_game *game);
-void	ft_render_victory(t_game *game);
+void	render_game_over(t_game *game);
+void	render_victory(t_game *game);
 
 #endif

@@ -12,7 +12,7 @@
 
 #include "so_long_bonus.h"
 
-void	ft_handle_collectible_animation(t_game *game)
+void	handle_collectible_animation(t_game *game)
 {
 	t_collectible	*collectible;
 	size_t			i;
@@ -26,7 +26,7 @@ void	ft_handle_collectible_animation(t_game *game)
 		{
 			if (collectible->active[i])
 			{
-				ft_render_image_to_grid(game,
+				render_image_to_grid(game,
 					collectible->frames[collectible->frame_controll],
 					collectible->collectible_x[i],
 					collectible->collectible_y[i]);
@@ -40,12 +40,12 @@ void	ft_handle_collectible_animation(t_game *game)
 	}
 }
 
-void	ft_handle_player_animation(t_game *game)
+void	handle_player_animation(t_game *game)
 {
 	game->player->frame_counter++;
 	if (game->player->frame_counter >= FRAME_RATE_ANIMATIONS)
 	{
-		ft_render_image_to_grid(game,
+		render_image_to_grid(game,
 			game->player->frames[game->player->frame_controll],
 			game->map->player_x, game->map->player_y);
 		game->player->frame_controll++;
@@ -55,20 +55,20 @@ void	ft_handle_player_animation(t_game *game)
 	}
 }
 
-void	ft_handle_exit_animation(t_game *game)
+void	handle_exit_animation(t_game *game)
 {
 	game->exit->frame_counter++;
 	if (game->exit->frame_counter >= FRAME_RATE_ANIMATIONS)
 	{
 		if (game->exit->open == 0)
 		{
-			ft_render_image_to_grid(game,
+			render_image_to_grid(game,
 				game->exit->frame_close[game->exit->frame_controll],
 				game->map->exit_x, game->map->exit_y);
 		}
 		else
 		{
-			ft_render_image_to_grid(game,
+			render_image_to_grid(game,
 				game->exit->frame_open[game->exit->frame_controll],
 				game->map->exit_x, game->map->exit_y);
 		}
@@ -79,9 +79,9 @@ void	ft_handle_exit_animation(t_game *game)
 	}
 }
 
-void	ft_handle_animation(t_game *game)
+void	handle_animation(t_game *game)
 {
-	ft_handle_player_animation(game);
-	ft_handle_collectible_animation(game);
-	ft_handle_exit_animation(game);
+	handle_player_animation(game);
+	handle_collectible_animation(game);
+	handle_exit_animation(game);
 }

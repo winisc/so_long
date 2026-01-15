@@ -24,10 +24,10 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	map_file = argv[1];
-	map = ft_load_map(map_file);
+	map = load_map(map_file);
 	if (!map)
 		return (1);
-	game = ft_load_game(map);
+	game = load_game(map);
 	if (!game)
 		return (1);
 	return (0);

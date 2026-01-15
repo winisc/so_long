@@ -24,31 +24,31 @@ INCLUDES		= -Iincludes -Imlx -I$(LIBFT_DIR)
 INCLUDES_BONUS	= -Iincludes_bonus -Imlx -I$(LIBFT_DIR)
 
 SRC				= $(SRC_DIR)/so_long.c \
-				  $(SRC_DIR)/ft_check_map.c \
-				  $(SRC_DIR)/ft_load_map.c \
-				  $(SRC_DIR)/ft_so_long_utils.c \
-				  $(SRC_DIR)/ft_check_path_map.c \
-				  $(SRC_DIR)/ft_map_erros.c \
-				  $(SRC_DIR)/ft_load_game.c \
-				  $(SRC_DIR)/ft_state_game.c \
-				  $(SRC_DIR)/ft_player_controll.c
+				  $(SRC_DIR)/check_map.c \
+				  $(SRC_DIR)/load_map.c \
+				  $(SRC_DIR)/so_long_utils.c \
+				  $(SRC_DIR)/check_path_map.c \
+				  $(SRC_DIR)/map_erros.c \
+				  $(SRC_DIR)/load_game.c \
+				  $(SRC_DIR)/state_game.c \
+				  $(SRC_DIR)/player_controll.c
 
 SRC_BONUS		= $(SRC_DIR_BONUS)/so_long_bonus.c \
-				  $(SRC_DIR_BONUS)/ft_check_map_bonus.c \
-				  $(SRC_DIR_BONUS)/ft_load_map_bonus.c \
-				  $(SRC_DIR_BONUS)/ft_so_long_utils_bonus.c \
-				  $(SRC_DIR_BONUS)/ft_check_path_map_bonus.c \
-				  $(SRC_DIR_BONUS)/ft_map_erros_bonus.c \
-				  $(SRC_DIR_BONUS)/ft_load_game_bonus.c \
-				  $(SRC_DIR_BONUS)/ft_state_game_bonus.c \
-				  $(SRC_DIR_BONUS)/ft_player_controll_bonus.c \
-				  $(SRC_DIR_BONUS)/ft_animation_controll_bonus.c \
-				  $(SRC_DIR_BONUS)/ft_collectible_controll_bonus.c \
-				  $(SRC_DIR_BONUS)/ft_enemy_controll_bonus.c \
-				  $(SRC_DIR_BONUS)/ft_init_entitys_bonus.c \
-				  $(SRC_DIR_BONUS)/ft_load_assets_bonus.c \
-				  $(SRC_DIR_BONUS)/ft_close_game_bonus.c \
-				  $(SRC_DIR_BONUS)/ft_end_game.c
+				  $(SRC_DIR_BONUS)/check_map_bonus.c \
+				  $(SRC_DIR_BONUS)/load_map_bonus.c \
+				  $(SRC_DIR_BONUS)/so_long_utils_bonus.c \
+				  $(SRC_DIR_BONUS)/check_path_map_bonus.c \
+				  $(SRC_DIR_BONUS)/map_erros_bonus.c \
+				  $(SRC_DIR_BONUS)/load_game_bonus.c \
+				  $(SRC_DIR_BONUS)/state_game_bonus.c \
+				  $(SRC_DIR_BONUS)/player_controll_bonus.c \
+				  $(SRC_DIR_BONUS)/animation_controll_bonus.c \
+				  $(SRC_DIR_BONUS)/collectible_controll_bonus.c \
+				  $(SRC_DIR_BONUS)/enemy_controll_bonus.c \
+				  $(SRC_DIR_BONUS)/init_entitys_bonus.c \
+				  $(SRC_DIR_BONUS)/load_assets_bonus.c \
+				  $(SRC_DIR_BONUS)/close_game_bonus.c \
+				  $(SRC_DIR_BONUS)/end_game.c
 
 OBJS			= $(SRC:.c=.o)
 OBJS_BONUS		= $(SRC_BONUS:.c=.o)
